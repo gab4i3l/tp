@@ -11,6 +11,13 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 ## Project team
 
+
+### Gabriel Phua
+
+<img src="images/gab4i3l.png" width="200px">
+
+[[github](https://github.com/gab4i3l)]
+
 ### Victoria Chew
 
 <img src="images/victoriachew.png" width="200px">
@@ -18,6 +25,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 [[homepage](http://www.comp.nus.edu.sg/~damithch)]
 [[github](https://github.com/victoria-chew)]
 [[portfolio](team/johndoe.md)]
+
 
 * Role: Project Advisor
 
