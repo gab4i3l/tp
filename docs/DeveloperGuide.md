@@ -297,35 +297,170 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `*`      | user with many persons in the address book | sort persons by name         | locate a person easily                                                 |
 
 *{More to be added}*
+### Use cases
+
+(For all use cases below, the **System** is the `Tuto` and the **Actor** is the `Parent`, unless specified otherwise)
 
 ### Use cases
 
-(For all use cases below, the **System** is the `AddressBook` and the **Actor** is the `user`, unless specified otherwise)
+#### Use Case: U1. View all Tutor Contacts
 
-**Use case: Delete a person**
+Preconditions: `Tuto` is running
 
-**MSS**
+**MSS:**
 
-1.  User requests to list persons
-2.  AddressBook shows a list of persons
-3.  User requests to delete a specific person in the list
-4.  AddressBook deletes the person
-
-    Use case ends.
+1. `Parent` requests to list all tutor contacts
+2. `Tuto` returns a list of all stored Tutor Profiles
+   Use Case ends
 
 **Extensions**
 
-* 2a. The list is empty.
+- 1a. Wrong Command given
+    - 1a1. `Tuto` returns an error message
 
-  Use case ends.
+        Use case ends
 
-* 3a. The given index is invalid.
+    - 2a. The contact list is empty
+    - 2a1. `Tuto` displays a message indicating no contacts have been added yet.
 
-    * 3a1. AddressBook shows an error message.
+        Use case ends.
 
-      Use case resumes at step 2.
+#### Use Case: U2. View a specific Tutor Contact
 
-*{More to be added}*
+Preconditions: `Tuto` is running
+
+**MSS:**
+
+1. `Parent` requests to list all Tutor Contacts (U1)
+2. `Parent` enters the command specifying the Index
+3. `Tuto` displays the tutor's full profile
+   Use Case ends
+
+**Extensions**
+
+- 2a. The provided index is invalid
+    - 2a1. `Tuto` shows an error message
+
+        Use case ends
+
+- 2b. The command format is invalid
+    - 2b1. `Tuto` shows an error message.
+
+        Use case ends
+
+#### Use Case: U3. Delete a Tutor from Tuto
+
+Preconditions: `Tuto` is running and `Tuto` contains at least one Tutor Contact
+
+Guarantees: The Tutor Contact is removed from storage upon successful completion.
+
+**MSS:**
+
+1. `Parent` requests to list all Tutor Contacts (U1)
+2. `Parent` enters the delete command specifying the Index of the tutor.
+3. `Tuto` deletes the contact
+4. `Tuto` displays a confirmation message that the Tutor Contact has been deleted successfully
+   Use Case ends
+
+**Extensions**
+
+- 2a. The provided index is invalid.
+    - 2a1. `Tuto` shows an error message.
+
+        Use case ends
+
+- 2b. The command format is invalid
+    - 2b1. `Tuto` shows an error message.
+
+        Use case ends
+
+#### Use Case: U4. Add a Tutor Profile
+
+Preconditions: `Tuto` is running
+
+Guarantees: If MSS completes until step 3, Tutor contact will be added to Tuto’s storage
+
+**MSS:**
+
+1. `Parent` enters the add command specifying the required Parameters
+2. `Tuto` validates the parameters.
+3. `Tuto` adds the Tutor Profile to the contact list
+4. `Tuto` displays a success message on the addition
+   Use Case ends
+
+**Extensions**
+
+- 2a. One or more compulsory Parameters are missing
+    - 2a1. `Tuto` returns an error message indicating the missing fields.
+
+        Use case ends
+
+- 2b. One or more Parameters are in an invalid format
+    - 2b1. `Tuto` returns an error message indicating the constraint violation.
+
+        Use case ends
+
+- 2c. A tutor with the same details (Duplicate) already exists.
+    - 2c1. `Tuto` shows a duplicate entry error message.
+
+        Use case ends
+
+#### Use Case: U5. Search for Tutors by Subject
+
+Preconditions: `Tuto` is running
+
+Guarantees: If MSS completes until step 3, `Tuto` displays all tutors in the contact list with matching subjects
+
+**MSS:**
+
+1. `Parent` enters the find command specifying a Subject keyword
+2. `Tuto` validates the entered details
+3. `Tuto` searches and displays a list of tutors matching the subject.
+   Use Case ends
+
+**Extensions**
+
+- 2a. The command format is invalid
+    - 2a1. `Tuto` shows an error message.
+
+        Use case ends
+
+- 3a. No tutors found in contacts list matching the keyword
+    - 3a1. `Tuto` shows a message indicating no results found.
+
+        Use case ends
+
+#### Use Case: U6. Edit a Tutor Profile
+
+Preconditions: `Tuto` is running and `Tuto` contains at least one Tutor Contact
+
+Guarantees: If MSS completes until step 4, the Tutor Contact will be updated in `Tuto's` storage.
+
+**MSS:**
+
+1. `Parent` requests to list all Tutor Contacts (U1).
+2. `Parent` enters the edit command, specifying the Index of the tutor and the Parameters to update.
+3. `Tuto` validates the index and the new parameters.
+4. `Tuto` updates the Tutor Profile
+5. `Tuto` displays the updated details of the tutor.
+   Use Case ends
+
+**Extensions**
+
+- 3a. The provided Index is invalid (e.g., 0, negative, or out of bounds).
+    - 3a1. `Tuto` shows an error message.
+
+        Use case ends
+
+- 3b. The provided Parameters violate validation rules.
+    - 3b1. `Tuto` returns an error message indicating the invalid format.
+
+        Use case ends
+
+- 3c. The update results in a Duplicate Entry of an existing Tutor Contact.
+    - 3c1. `Tuto` shows a duplicate entry error message.
+
+        Use case ends
 
 ### Non-Functional Requirements
 
