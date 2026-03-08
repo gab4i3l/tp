@@ -1,538 +1,273 @@
 /* ============================================================
-   DarkTheme.css  —  Sea Light Blue Morphism (Light Blue Background)
+   DarkTheme.css  —  Coral-Lavender Gradient + White Glass
    Font: SF Pro (bundled in /fonts/SF-Pro.ttf, loaded in Main.java)
    ============================================================ */
 
-/* ── Root — clean white background with a cool blue tint ─── */
+/* ── Root ── */
 .root {
-    -fx-background-color: linear-gradient(from 0% 0% to 100% 100%,
-        #FFFFFF 0%, #F0F8FF 50%, #E6F2FF 100%);
+    -fx-background-color: linear-gradient(to bottom right, #f0d5c8 0%, #e8d8e8 55%, #d4c8e8 100%);
     -fx-font-family: "SF Pro", "Helvetica Neue", Arial, sans-serif;
     -fx-font-smoothing-type: lcd;
 }
 
-/* ── Header — thin translucent glass sheet ─────────────────── */
-#headerBar {
-    -fx-background-color: rgba(255, 255, 255, 0.35);
-    -fx-effect: dropshadow(gaussian, rgba(100, 150, 220, 0.18), 10, 0, 0, 2);
-    -fx-border-color: rgba(180,220,230,0.30);
-    -fx-border-width: 0 0 1 0;
-    -fx-background-radius: 10;
-}
-
-#headerLabel {
-    -fx-text-fill: #1e3a5f;
-    -fx-font-size: 16px;
-    -fx-font-weight: 600;
-}
-
-/* ── Input bar — translucent glass shelf ───────────────────── */
-#inputBar {
-    -fx-background-color: rgba(255,255,255,0.18);
-    -fx-background-radius: 18 18 0 0;
-    -fx-effect: dropshadow(gaussian, rgba(100, 150, 220, 0.10), 10, 0, 0, -2);
-    -fx-border-color: rgba(180,220,230,0.22);
-    -fx-border-width: 1 0 0 0;
-}
-
-.background {
-    -fx-background-color: rgba(240, 250, 255, 0.60);
-    background-color: #F0F8FF; /* Used in the default.html file */
-}
-
-.label {
-    -fx-font-size: 11pt;
-    -fx-font-family: "SF Pro", "Segoe UI Semibold", Arial, sans-serif;
-    -fx-text-fill: #2c5282;
-    -fx-opacity: 0.9;
-}
-
-.label-bright {
-    -fx-font-size: 11pt;
-    -fx-font-family: "SF Pro", "Segoe UI Semibold", Arial, sans-serif;
-    -fx-text-fill: #1e3a5f;
-    -fx-opacity: 1;
-}
-
-.label-header {
-    -fx-font-size: 32pt;
-    -fx-font-family: "SF Pro", "Segoe UI Light", Arial, sans-serif;
-    -fx-text-fill: #1e3a5f;
-    -fx-opacity: 1;
-}
-
-/* ── Text fields — translucent paper with ink ─────────────── */
-.text-field {
-    -fx-background-color: rgba(255, 255, 255, 0.28);
-    -fx-text-fill: #1e3a5f;
-    -fx-prompt-text-fill: rgba(60,80,100,0.45);
-    -fx-font-family: "SF Pro", "Helvetica Neue", Arial, sans-serif;
-    -fx-font-size: 14px;
-    -fx-background-radius: 18px;
-    -fx-border-radius: 18px;
-    -fx-border-color: rgba(180,220,230,0.30);
-    -fx-border-width: 1px;
-    -fx-padding: 8 14 8 14;
-}
-
-.text-field:focused {
-    -fx-background-color: rgba(255, 255, 255, 0.55);
-    -fx-border-color: rgba(100,150,200,0.55);
-    -fx-effect: dropshadow(gaussian, rgba(100, 150, 200, 0.28), 8, 0.2, 0, 0);
-}
-
-.tab-pane {
-    -fx-padding: 0 0 0 1;
-}
-
-.tab-pane .tab-header-area {
-    -fx-padding: 0 0 0 0;
-    -fx-min-height: 0;
-    -fx-max-height: 0;
-}
-
-.table-view {
-    -fx-background-color: transparent;
-    -fx-control-inner-background: transparent;
-}
-
-.table-row-cell:filled:odd {
-    -fx-background-color: rgba(240,250,255,0.85); /* very light sea blue */
-}
-
-.table-row-cell:filled:even {
-    -fx-background-color: rgba(255,255,255,0.95); /* near-white */
-}
-
-.table-row-cell:filled:selected {
-    -fx-background-color: rgba(195,230,250,0.70); /* light aqua selection */
-}
-
-.table-view .column-header {
-    -fx-background-color: transparent;
-}
-
-.table-view .column-header .label {
-    -fx-text-fill: #1e3a5f;
-    -fx-font-family: "SF Pro", "Segoe UI Light", Arial, sans-serif;
-    -fx-font-size: 14pt;
-}
-
-.split-pane:horizontal .split-pane-divider {
-    -fx-background-color: rgba(220, 240, 250, 0.60);
-    -fx-border-color: transparent transparent transparent rgba(190, 220, 245, 0.40);
-}
-
-.split-pane {
-    -fx-border-radius: 1;
-    -fx-border-width: 1;
-    -fx-background-color: rgba(245, 252, 255, 0.50);
-}
-
-.list-view {
-    -fx-background-color: transparent;
-}
-
-.list-cell:filled:even {
-    -fx-background-color: rgba(240,250,255,0.82);
-}
-
-.list-cell:filled:odd {
-    -fx-background-color: rgba(255,255,255,0.90);
-}
-
-.list-cell:filled:selected {
-    -fx-background-color: rgba(195,230,250,0.65);
-}
-
-.list-cell .label,
-.cell_big_label,
-.cell_small_label {
-    -fx-text-fill: #1e3a5f;
-}
-
-.stack-pane,
-.pane-with-border,
-.grid-pane,
-.status-bar,
-.result-display,
-#personListPanel,
-#personWebpage {
-    -fx-background-color: rgba(255,255,255,0.78);
-    -fx-border-color: rgba(180,220,230,0.25);
-    -fx-border-width: 1px;
-    -fx-background-radius: 10;
-}
-
-/* Subtle card-like shadow for list cells and table rows (looks like individual sheets) */
-.list-cell,
-.list-cell:filled,
-.table-row-cell {
-    /* More prominent outline as requested */
-    -fx-background-color: rgba(255, 255, 255, 0.90);
-    -fx-border-color: rgba(180, 225, 240, 0.8);
-    -fx-border-width: 1px;
-    -fx-border-radius: 8;
-    -fx-background-radius: 8;
-    -fx-effect: dropshadow(gaussian, rgba(0, 100, 150, 0.15), 5, 0, 0, 1);
-    -fx-padding: 5 30 5 5; /* significantly increased right padding for scrollbar separation */
-}
-
-/* Hide empty cells that do nothing at the bottom of the list */
-.list-cell:empty {
-    -fx-background-color: transparent;
-    -fx-border-color: transparent;
-    -fx-effect: none;
-}
-
-/* ── Tags — small glass chips ────────────────────────────── */
-#tags .label {
-    -fx-text-fill: #ffffff;
-    -fx-background-color: rgba(0,130,180,0.90); /* Sea blue */
-    -fx-padding: 2 6 2 6;
-    -fx-border-radius: 8px;
-    -fx-background-radius: 8px;
-    -fx-font-size: 11px;
-}
-
-/*
- * Metro style Push Button - Updated with Glass Morphism (Light Theme)
- * Author: Pedro Duque Vieira
- * http://pixelduke.wordpress.com/2012/10/23/jmetro-windows-8-controls-on-java/
- */
-.button {
-    -fx-background-color: rgba(40, 120, 180, 0.92); /* Sea blue button */
-    -fx-text-fill: #ffffff;
-    -fx-font-size: 14px;
-    -fx-font-weight: 600;
-    -fx-background-radius: 18px;
-    -fx-border-radius: 18px;
-    -fx-border-color: rgba(70,140,190,0.40);
-    -fx-border-width: 1px;
-    -fx-effect: dropshadow(gaussian, rgba(0, 100, 150, 0.30), 8, 0.2, 0, 2);
-    -fx-padding: 8 18 8 18;
-    -fx-cursor: hand;
-}
-
-.button:hover {
-    -fx-background-color: rgba(50, 130, 200, 0.95);
-    -fx-effect: dropshadow(gaussian, rgba(0, 100, 150, 0.50), 12, 0.3, 0, 3);
-    -fx-scale-x: 1.03;
-    -fx-scale-y: 1.03;
-}
-
-.button:pressed, .button:default:hover:pressed {
-    -fx-background-color: rgba(20, 90, 150, 0.95);
-    -fx-scale-x: 0.97;
-    -fx-scale-y: 0.97;
-    -fx-effect: none;
-    -fx-text-fill: #ffffff;
-}
-
-.button:focused {
-    /* Use a single solid border for focus to avoid unsupported functions */
-    -fx-border-color: rgba(60, 130, 200, 0.80);
-    -fx-border-width: 1px;
-    -fx-border-style: solid;
-    -fx-border-radius: 18px;
-}
-
-.button:disabled, .button:default:disabled {
-    -fx-opacity: 0.4;
-    -fx-background-color: rgba(160, 180, 210, 0.50);
-    -fx-text-fill: #8a9ab0;
-}
-
-.button:default {
-    -fx-background-color: -fx-focus-color;
-    -fx-text-fill: #ffffff;
-}
-
-.button:default:hover {
-    -fx-background-color: derive(-fx-focus-color, 30%);
-}
-
-.dialog-pane {
-    -fx-background-color: rgba(245, 252, 255, 0.95);
-}
-
-.dialog-pane > *.button-bar > *.container {
-    -fx-background-color: rgba(245, 252, 255, 0.95);
-}
-
-.dialog-pane > *.label.content {
-    -fx-font-size: 14px;
-    -fx-font-weight: bold;
-    -fx-text-fill: #1e3a5f;
-}
-
-/* Replace invalid pseudo-selector with normal descendant selector */
-.dialog-pane .header-panel {
-    -fx-background-color: rgba(220, 240, 250, 0.80);
-}
-
-.dialog-pane .header-panel .label {
-    -fx-font-size: 18px;
-    -fx-font-style: italic;
-    -fx-fill: #1e3a5f;
-    -fx-text-fill: #1e3a5f;
-}
-
-/* ── Scroll area ─────────────────────────────────────────────── */
-.scroll-pane,
-.scroll-pane .viewport {
-    -fx-background-color: transparent;
-    -fx-background: transparent;
-}
-
-/* Scrollbar track — invisible background */
-.scroll-bar {
-    -fx-background-color: transparent;
-    -fx-pref-width: 6px
-}
-
-/* Modern slim pill thumb */
-.scroll-bar .thumb {
-    -fx-background-color: rgba(100,160,200,0.45);
-    -fx-background-radius: 6px;
-    -fx-border-radius: 6px;
-    -fx-background-insets: 0;
-}
-
-.scroll-bar .thumb:hover {
-    -fx-background-color: rgba(80,140,190,0.70);
-}
-
-.scroll-bar .track {
-    -fx-background-color: rgba(200, 225, 235, 0.12);
-    -fx-background-radius: 6px;
-}
-
-/* Hide the arrow buttons */
-.scroll-bar .increment-button,
-.scroll-bar .decrement-button {
-    -fx-pref-height: 0;
-    -fx-pref-width: 0;
-    -fx-opacity: 0;
-    -fx-background-color: transparent;
-    -fx-padding: 0 0 0 0;
-}
-
-.scroll-bar .increment-arrow,
-.scroll-bar .decrement-arrow {
-    -fx-shape: " ";
-}
-
-.scroll-bar:vertical .increment-arrow,
-.scroll-bar:vertical .decrement-arrow {
-    -fx-padding: 0;
-}
-
-.scroll-bar:horizontal .increment-arrow,
-.scroll-bar:horizontal .decrement-arrow {
-    -fx-padding: 0;
-}
-
-#cardPane {
-    -fx-background-color: transparent;
-    -fx-border-width: 0;
-}
-
-#commandTypeLabel {
-    -fx-font-size: 11px;
-    -fx-text-fill: #F70D1A;
-}
-
-#commandTextField {
-    -fx-background-color: transparent;
-    -fx-background-insets: 0;
-    -fx-border-color: transparent;
-    -fx-border-insets: 0;
-    -fx-border-width: 0;
-    -fx-font-family: "SF Pro", "Segoe UI Light", Arial, sans-serif;
-    -fx-font-size: 13pt;
-    -fx-text-fill: #1e3a5f;
-    -fx-effect: none;
-}
-
-#commandTextField:focused {
-    -fx-background-color: transparent;
-    -fx-border-color: transparent;
-    -fx-effect: none;
-    -fx-focus-color: transparent;
-    -fx-faint-focus-color: transparent;
-}
-
-#filterField, #personListPanel, #personWebpage {
-    -fx-effect: none; /* no inner shadow */
-}
-
-/* Make SplitPane transparent to remove outline/border */
-.split-pane {
-    -fx-background-color: transparent;
-    -fx-padding: 0;
-}
-
-.split-pane .split-pane-divider {
-    -fx-background-color: transparent;
-    -fx-border-color: transparent;
-    -fx-padding: 0;
-}
-
-.result-display {
-    -fx-background-color: transparent;
-    -fx-background-radius: 0;
-    -fx-border-radius: 0;
-    -fx-border-color: transparent;
-    -fx-border-width: 0;
-    -fx-effect: none;
-}
-
-/* Targeted elevation removed to unify design with person list */
-/* Keep pane-with-border for person list elevated but slightly less than command/result */
-/* ── Main App Wrapper ────────────────────────────────────── */
+/* ── Outer glass panel ── */
 .pane-with-border {
-    -fx-background-color: rgba(255, 255, 255, 0.45);
-    -fx-border-color: rgba(180, 220, 230, 0.50);
-    -fx-border-width: 1px;
-    -fx-background-radius: 18px;
-    -fx-border-radius: 18px;
-    -fx-effect: dropshadow(gaussian, rgba(100, 150, 200, 0.15), 10, 0, 0, 2);
+    -fx-background-color: rgba(255, 255, 255, 0.25);
+    -fx-border-color: rgba(255, 255, 255, 0.70);
+    -fx-border-width: 1.5px;
+    -fx-background-radius: 20px;
+    -fx-border-radius: 20px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.18), 40, 0, 0, 12);
 }
 
-.pane-with-border:focused {
-     -fx-focus-color: transparent;
-     -fx-faint-focus-color: transparent;
-     -fx-border-color: transparent; /* Remove focus border */
-}
-
-#personList {
-    -fx-effect: none;
+/* ── Split Pane ── */
+.split-pane {
     -fx-background-color: transparent;
-    -fx-border-color: transparent transparent rgba(180,220,230,0.25) transparent; /* Optional: Keep faint separator or remove entirely */
-     -fx-border-width: 0 0 0 0; /* Remove border entirely */
-}
-
-/* ── Strip styles from layout wrappers to prevent double-borders ── */
-.stack-pane,
-#commandBoxPlaceholder,
-#resultDisplayPlaceholder,
-#personListPanelPlaceholder {
-    -fx-background-color: transparent;
-    -fx-border-color: transparent;
-    -fx-effect: none;
     -fx-padding: 0;
 }
 
-
-/* ── Command Box (Input Field) ────────────────────────────── */
-#commandTextField {
+.split-pane .split-pane-divider,
+.split-pane:horizontal > .split-pane-divider {
     -fx-background-color: rgba(255, 255, 255, 0.45);
-    -fx-text-fill: #1e3a5f;
-    -fx-prompt-text-fill: rgba(100, 150, 200, 0.65);
-    -fx-font-family: "SF Pro", "Helvetica Neue", Arial, sans-serif;
-    -fx-font-size: 14pt;
-    -fx-background-radius: 18px;
-    -fx-border-radius: 18px;
-    -fx-border-color: rgba(180, 220, 230, 0.60);
-    -fx-border-width: 1px;
-    -fx-padding: 10 16 10 16; /* Replicating AlphaOne padding */
-    -fx-effect: dropshadow(gaussian, rgba(100, 150, 200, 0.10), 8, 0, 0, 2);
+    -fx-background-insets: 0 4 0 4;
+    -fx-border-color: transparent;
+    -fx-padding: 0 4 0 4;
 }
 
-#commandTextField:focused {
-    -fx-background-color: rgba(255, 255, 255, 0.75);
-    -fx-border-color: rgba(120, 180, 210, 0.75);
-    -fx-effect: dropshadow(gaussian, rgba(120, 180, 210, 0.28), 8, 0.2, 0, 0);
+.split-pane-divider:hover {
+    -fx-background-color: rgba(255, 255, 255, 0.70);
 }
 
-/* ── Result Display (Output Field) ────────────────────────── */
-.result-display {
-    -fx-background-color: rgba(255, 255, 255, 0.45);
-    -fx-border-color: rgba(180, 220, 230, 0.60);
-    -fx-border-width: 1px;
-    -fx-background-radius: 18px;
-    -fx-border-radius: 18px;
-    -fx-padding: 12;
-    -fx-effect: dropshadow(gaussian, rgba(100, 150, 200, 0.10), 8, 0, 0, 2);
+/* ── Menu Bar ── */
+.menu-bar {
+    -fx-background-color: rgba(255, 255, 255, 0.35);
+    -fx-border-color: rgba(255, 255, 255, 0.50);
+    -fx-border-width: 0 0 1px 0;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.05), 6, 0, 0, 1);
+    -fx-padding: 2 8 2 8;
 }
 
-/* ── Contact List Cards ──────────────────────────────────── */
-.list-cell,
-.list-cell:filled {
-    -fx-background-color: rgba(255, 255, 255, 0.65);
-    -fx-border-color: rgba(180, 220, 230, 0.40);
-    -fx-border-width: 1px;
+.menu-bar .label {
+    -fx-text-fill: #1e2a35;
+    -fx-font-size: 13px;
+    -fx-font-weight: 500;
+}
+
+.menu-bar .menu-button {
+    -fx-background-color: transparent;
+    -fx-background-radius: 8px;
+    -fx-border-color: transparent;
+    -fx-border-radius: 8px;
+    -fx-padding: 4 8 4 8;
+}
+
+.menu-bar .menu-button:hover,
+.menu-bar .menu-button:showing {
+    -fx-background-color: rgba(255, 255, 255, 0.55);
+}
+
+/* ── Dropdown menu ── */
+.context-menu {
+    -fx-background-color: rgba(248, 242, 248, 0.96);
     -fx-background-radius: 14px;
     -fx-border-radius: 14px;
-    -fx-effect: dropshadow(gaussian, rgba(100, 150, 200, 0.15), 5, 0, 0, 1);
-    -fx-padding: 10;
+    -fx-border-color: rgba(255, 255, 255, 0.82);
+    -fx-border-width: 1px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.12), 18, 0, 0, 5);
+    -fx-padding: 5;
 }
 
-/* Hide empty cells at the bottom of the list */
-.list-cell:empty {
-    -fx-background-color: transparent;
-    -fx-border-color: transparent;
-    -fx-effect: none;
+.menu-item {
+    -fx-padding: 6 12 6 12;
+    -fx-background-radius: 8px;
 }
 
-/* ==========================================
-   1. STRIP ALL HIDDEN WRAPPERS
-   This prevents the outer box from drawing
-   separately from the inner text box.
-   ========================================== */
+.menu-item .label { -fx-text-fill: #1e2a35; }
+
+.menu-item:hover, .menu-item:focused {
+    -fx-background-color: rgba(10, 132, 255, 0.82);
+}
+
+.menu-item:hover .label, .menu-item:focused .label {
+    -fx-text-fill: #ffffff;
+}
+
+/* ── Strip transparent layout wrappers ── */
+.stack-pane,
 #commandBoxPlaceholder,
 #resultDisplayPlaceholder,
+#personListPanelPlaceholder,
 #commandBoxPlaceholder .stack-pane,
 #resultDisplayPlaceholder .pane-with-border,
 #resultDisplayPlaceholder .stack-pane {
     -fx-background-color: transparent;
     -fx-border-color: transparent;
     -fx-effect: none;
-    -fx-padding: 0; /* Removes the gap between the glass and the text */
+    -fx-padding: 0;
 }
 
-/* ==========================================
-   2. COMMAND BOX (INPUT)
-   ========================================== */
+/* ── Typography ── */
+.label {
+    -fx-font-size: 11pt;
+    -fx-font-family: "SF Pro", "Segoe UI Semibold", Arial, sans-serif;
+    -fx-text-fill: #1a2530;
+}
+
+/* ── Contact list ── */
+.list-view {
+    -fx-background-color: transparent;
+}
+
+.list-cell,
+.list-cell:filled {
+    -fx-background-color: rgba(255, 255, 255, 0.88);
+    -fx-border-color: rgba(255, 255, 255, 0.95);
+    -fx-border-width: 1px;
+    -fx-background-radius: 14px;
+    -fx-border-radius: 14px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.08), 12, 0, 0, 3);
+    -fx-padding: 12 15 12 15;
+}
+
+.list-cell:filled:hover {
+    -fx-background-color: rgba(255, 248, 250, 0.96);
+    -fx-border-color: rgba(255, 255, 255, 1.0);
+    -fx-effect: dropshadow(gaussian, rgba(180, 100, 120, 0.14), 16, 0, 0, 4);
+    -fx-cursor: hand;
+}
+
+.list-cell:filled:selected {
+    -fx-background-color: rgba(245, 225, 240, 0.95);
+    -fx-border-color: rgba(200, 150, 190, 0.55);
+    -fx-effect: dropshadow(gaussian, rgba(180, 100, 160, 0.20), 14, 0, 0, 3);
+}
+
+.list-cell:empty {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-effect: none;
+}
+
+/* ── Command Box ── */
 #commandTextField {
-    -fx-background-color: rgba(255, 255, 255, 0.45);
-    -fx-control-inner-background: transparent; /* Strips internal white box */
-    -fx-text-fill: #1e3a5f;
-    -fx-prompt-text-fill: rgba(100, 150, 200, 0.65);
+    -fx-background-color: rgba(255, 255, 255, 0.90);
+    -fx-text-fill: #1a2530;
+    -fx-prompt-text-fill: rgba(100, 80, 90, 0.55);
     -fx-font-family: "SF Pro", "Helvetica Neue", Arial, sans-serif;
     -fx-font-size: 14pt;
-    -fx-background-radius: 18px;
-    -fx-border-radius: 18px;
-    -fx-border-color: rgba(180, 220, 230, 0.60);
-    -fx-border-width: 1px;
-    -fx-padding: 10 16 10 16;
-    -fx-effect: dropshadow(gaussian, rgba(100, 150, 200, 0.10), 8, 0, 0, 2);
+    -fx-background-radius: 14px;
+    -fx-border-radius: 14px;
+    -fx-border-color: rgba(255, 255, 255, 0.95);
+    -fx-border-width: 1.5px;
+    -fx-padding: 12 16 12 16;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.08), 12, 0, 0, 3);
 }
 
 #commandTextField:focused {
-    -fx-background-color: rgba(255, 255, 255, 0.75);
-    -fx-border-color: rgba(120, 180, 210, 0.75);
-    -fx-effect: dropshadow(gaussian, rgba(120, 180, 210, 0.28), 8, 0.2, 0, 0);
+    -fx-background-color: rgba(255, 255, 255, 0.98);
+    -fx-border-color: rgba(200, 150, 190, 0.65);
+    -fx-effect: dropshadow(gaussian, rgba(180, 100, 160, 0.22), 14, 0, 0, 0);
 }
 
-/* ==========================================
-   3. RESULT DISPLAY (OUTPUT)
-   ========================================== */
+/* ── Result Display ── */
 .result-display {
-    -fx-background-color: rgba(255, 255, 255, 0.45);
-    -fx-border-color: rgba(180, 220, 230, 0.60);
-    -fx-border-width: 1px;
-    -fx-background-radius: 18px;
-    -fx-border-radius: 18px;
-    -fx-padding: 12;
-    -fx-effect: dropshadow(gaussian, rgba(100, 150, 200, 0.10), 8, 0, 0, 2);
+    -fx-background-color: rgba(255, 255, 255, 0.92);
+    -fx-border-color: rgba(255, 255, 255, 0.98);
+    -fx-border-width: 1.5px;
+    -fx-background-radius: 14px;
+    -fx-border-radius: 14px;
+    -fx-padding: 15;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.08), 14, 0, 0, 4);
 }
 
-/* ── THIS IS THE CRITICAL FIX FOR THE TEXTAREA ── */
-/* It forces the normally solid-white inner layers to be transparent */
 .result-display .content,
 .result-display .viewport {
     -fx-background-color: transparent;
     -fx-border-color: transparent;
+}
+
+/* ── Tags ── */
+#tags .label {
+    -fx-text-fill: #ffffff;
+    -fx-background-color: rgba(14, 165, 233, 0.88);
+    -fx-padding: 3 9 3 9;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+    -fx-effect: none;
+}
+
+#tags .label.friends    { -fx-background-color: rgba(20, 184, 166, 0.90); }
+#tags .label.colleagues { -fx-background-color: rgba(139, 92, 246, 0.90); }
+#tags .label.neighbours { -fx-background-color: rgba(34, 197, 94, 0.90); }
+#tags .label.family     { -fx-background-color: rgba(249, 115, 22, 0.90); }
+#tags .label.classmates { -fx-background-color: rgba(236, 72, 153, 0.90); }
+
+/* ── Scrollbar ── */
+.scroll-pane, .scroll-pane .viewport {
+    -fx-background-color: transparent;
+}
+
+.scroll-bar {
+    -fx-background-color: transparent;
+    -fx-pref-width: 8px;
+}
+
+.scroll-bar .thumb {
+    -fx-background-color: rgba(180, 140, 170, 0.38);
+    -fx-background-radius: 8px;
+}
+
+.scroll-bar .thumb:hover {
+    -fx-background-color: rgba(180, 140, 170, 0.60);
+}
+
+.scroll-bar .track { -fx-background-color: transparent; }
+
+.scroll-bar .increment-button,
+.scroll-bar .decrement-button {
+    -fx-pref-height: 0;
+    -fx-pref-width: 0;
+    -fx-opacity: 0;
+}
+
+/* ── Button ── */
+.button {
+    -fx-background-color: rgba(10, 132, 255, 0.90);
+    -fx-text-fill: #ffffff;
+    -fx-font-family: "SF Pro", "Helvetica Neue", Arial, sans-serif;
+    -fx-font-size: 14px;
+    -fx-font-weight: 600;
+    -fx-background-radius: 12px;
+    -fx-border-radius: 12px;
+    -fx-border-color: rgba(255, 255, 255, 0.50);
+    -fx-border-width: 1px;
+    -fx-padding: 8 16 8 16;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.08), 8, 0, 0, 2);
+    -fx-cursor: hand;
+}
+
+.button:hover {
+    -fx-background-color: rgba(10, 132, 255, 1.0);
+    -fx-effect: dropshadow(gaussian, rgba(10, 132, 255, 0.25), 12, 0, 0, 4);
+    -fx-scale-x: 1.02;
+    -fx-scale-y: 1.02;
+}
+
+.button:armed {
+    -fx-background-color: rgba(0, 113, 227, 1.0);
+    -fx-scale-x: 0.98;
+    -fx-scale-y: 0.98;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.04), 4, 0, 0, 1);
+}
+
+.button:focused {
+    -fx-background-color: rgba(10, 132, 255, 0.90);
+    -fx-border-color: rgba(255, 255, 255, 0.55);
+    -fx-effect: dropshadow(gaussian, rgba(10, 132, 255, 0.22), 12, 0, 0, 0);
+}
+
+.button:disabled {
+    -fx-opacity: 0.45;
 }

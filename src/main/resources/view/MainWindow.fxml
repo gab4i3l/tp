@@ -59,8 +59,8 @@
                            minWidth="600" style="-fx-background-color: transparent;">
                 </StackPane>
 
-                <StackPane fx:id="commandBoxPlaceholder" VBox.vgrow="NEVER" minWidth="600" minHeight="65"
-                           prefHeight="65" maxHeight="400"
+                <StackPane fx:id="commandBoxPlaceholder" VBox.vgrow="NEVER" minWidth="600" minHeight="67.5"
+                           prefHeight="67.5" maxHeight="400"
                            style="-fx-background-color: transparent;">
                 </StackPane>
               </VBox>
