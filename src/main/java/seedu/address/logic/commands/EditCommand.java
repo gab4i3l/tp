@@ -5,6 +5,8 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_RATE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_SUBJECT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 
@@ -26,6 +28,7 @@ import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
+import seedu.address.model.person.Rate;
 import seedu.address.model.person.Subject;
 import seedu.address.model.tag.Tag;
 
@@ -44,6 +47,8 @@ public class EditCommand extends Command {
             + "[" + PREFIX_PHONE + "PHONE] "
             + "[" + PREFIX_EMAIL + "EMAIL] "
             + "[" + PREFIX_ADDRESS + "ADDRESS] "
+            + "[" + PREFIX_SUBJECT + "ADDRESS] "
+            + "[" + PREFIX_RATE + "RATE] "
             + "[" + PREFIX_TAG + "TAG]...\n"
             + "Example: " + COMMAND_WORD + " 1 "
             + PREFIX_PHONE + "91234567 "
@@ -101,9 +106,11 @@ public class EditCommand extends Command {
         Email updatedEmail = editPersonDescriptor.getEmail().orElse(personToEdit.getEmail());
         Address updatedAddress = editPersonDescriptor.getAddress().orElse(personToEdit.getAddress());
         Subject updatedSubject = editPersonDescriptor.getSubject().orElse(personToEdit.getSubject());
+        Rate updatedRate = editPersonDescriptor.getRate().orElse(personToEdit.getRate());
         Set<Tag> updatedTags = editPersonDescriptor.getTags().orElse(personToEdit.getTags());
 
-        return new Person(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedSubject, updatedTags);
+        return new Person(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedSubject, updatedRate,
+                updatedTags);
     }
 
     @Override
@@ -140,6 +147,7 @@ public class EditCommand extends Command {
         private Email email;
         private Address address;
         private Subject subject;
+        private Rate rate;
         private Set<Tag> tags;
 
         public EditPersonDescriptor() {}
@@ -154,6 +162,7 @@ public class EditCommand extends Command {
             setEmail(toCopy.email);
             setAddress(toCopy.address);
             setSubject(toCopy.subject);
+            setRate(toCopy.rate);
             setTags(toCopy.tags);
         }
 
@@ -204,6 +213,14 @@ public class EditCommand extends Command {
             return Optional.ofNullable(subject);
         }
 
+        public void setRate(Rate rate) {
+            this.rate = rate;
+        }
+
+        public Optional<Rate> getRate() {
+            return Optional.ofNullable(rate);
+        }
+
         /**
          * Sets {@code tags} to this object's {@code tags}.
          * A defensive copy of {@code tags} is used internally.
@@ -237,6 +254,8 @@ public class EditCommand extends Command {
                     && Objects.equals(phone, otherEditPersonDescriptor.phone)
                     && Objects.equals(email, otherEditPersonDescriptor.email)
                     && Objects.equals(address, otherEditPersonDescriptor.address)
+                    && Objects.equals(subject, otherEditPersonDescriptor.subject)
+                    && Objects.equals(rate, otherEditPersonDescriptor.rate)
                     && Objects.equals(tags, otherEditPersonDescriptor.tags);
         }
 
@@ -247,6 +266,8 @@ public class EditCommand extends Command {
                     .add("phone", phone)
                     .add("email", email)
                     .add("address", address)
+                    .add("subject", subject)
+                    .add("rate", rate)
                     .add("tags", tags)
                     .toString();
         }
