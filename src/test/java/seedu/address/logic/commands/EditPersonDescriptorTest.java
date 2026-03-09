@@ -10,6 +10,8 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_EMAIL_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_PHONE_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_SUBJECT_BOB;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_RATE_BOB;
 
 import org.junit.jupiter.api.Test;
 
@@ -52,6 +54,14 @@ public class EditPersonDescriptorTest {
         editedAmy = new EditPersonDescriptorBuilder(DESC_AMY).withAddress(VALID_ADDRESS_BOB).build();
         assertFalse(DESC_AMY.equals(editedAmy));
 
+        // different subject -> returns false
+        editedAmy = new EditPersonDescriptorBuilder(DESC_AMY).withSubject(VALID_SUBJECT_BOB).build();
+        assertFalse(DESC_AMY.equals(editedAmy));
+
+        // different rate -> returns false
+        editedAmy = new EditPersonDescriptorBuilder(DESC_AMY).withRate(VALID_RATE_BOB).build();
+        assertFalse(DESC_AMY.equals(editedAmy));
+
         // different tags -> returns false
         editedAmy = new EditPersonDescriptorBuilder(DESC_AMY).withTags(VALID_TAG_HUSBAND).build();
         assertFalse(DESC_AMY.equals(editedAmy));
@@ -64,7 +74,10 @@ public class EditPersonDescriptorTest {
                 + editPersonDescriptor.getName().orElse(null) + ", phone="
                 + editPersonDescriptor.getPhone().orElse(null) + ", email="
                 + editPersonDescriptor.getEmail().orElse(null) + ", address="
-                + editPersonDescriptor.getAddress().orElse(null) + ", tags="
+                + editPersonDescriptor.getAddress().orElse(null) + ", subject="
+                + editPersonDescriptor.getSubject().orElse(null) + ", rate="
+                + editPersonDescriptor.getRate().orElse(null)
+                + ", tags="
                 + editPersonDescriptor.getTags().orElse(null) + "}";
         assertEquals(expected, editPersonDescriptor.toString());
     }
