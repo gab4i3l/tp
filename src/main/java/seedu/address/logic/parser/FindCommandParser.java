@@ -1,12 +1,15 @@
 package seedu.address.logic.parser;
 
 import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_RATE;
 
 import java.util.Arrays;
 
 import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.person.NameContainsKeywordsPredicate;
+import seedu.address.model.person.RateEqualsPredicate;
 
 /**
  * Parses input arguments and creates a new FindCommand object
@@ -19,15 +22,40 @@ public class FindCommandParser implements Parser<FindCommand> {
      * @throws ParseException if the user input does not conform the expected format
      */
     public FindCommand parse(String args) throws ParseException {
-        String trimmedArgs = args.trim();
-        if (trimmedArgs.isEmpty()) {
+        ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_RATE);
+
+        boolean hasName = argMultimap.getValue(PREFIX_NAME).isPresent();
+        boolean hasRate = argMultimap.getValue(PREFIX_RATE).isPresent();
+
+        if (hasName == hasRate) {
             throw new ParseException(
                     String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindCommand.MESSAGE_USAGE));
         }
 
-        String[] nameKeywords = trimmedArgs.split("\\s+");
+        if (hasName) {
+            String nameArgs = argMultimap.getValue(PREFIX_NAME).get().trim();
 
-        return new FindCommand(new NameContainsKeywordsPredicate(Arrays.asList(nameKeywords)));
+            if (nameArgs.isEmpty()) {
+                throw new ParseException(
+                        String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindCommand.MESSAGE_USAGE));
+            }
+
+            String[] nameKeywords = nameArgs.split("\\s+");
+            return new FindCommand(new NameContainsKeywordsPredicate(Arrays.asList(nameKeywords)));
+        }
+
+        String rateArgs = argMultimap.getValue(PREFIX_RATE).get().trim();
+
+        if (rateArgs.isEmpty()) {
+            throw new ParseException(
+                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindCommand.MESSAGE_USAGE));
+        }
+
+        try {
+            int rate = Integer.parseInt(rateArgs);
+            return new FindCommand(new RateEqualsPredicate(rate));
+        } catch (NumberFormatException e) {
+            throw new ParseException("Rate must be a valid integer.");
+        }
     }
-
 }
