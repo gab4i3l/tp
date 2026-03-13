@@ -4,14 +4,15 @@ import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
 import javafx.collections.ObservableList;
-import javafx.util.Duration;
 import javafx.fxml.FXML;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextArea;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.ScrollEvent;
 import javafx.scene.layout.Region;
 import javafx.scene.text.Text;
+import javafx.util.Duration;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
@@ -24,6 +25,7 @@ public class CommandBox extends UiPart<Region> {
     public static final String ERROR_STYLE_CLASS = "error";
     private static final String FXML = "CommandBox.fxml";
     private Timeline resizeTimeline;
+    private boolean isScrollable = false;
 
     private final CommandExecutor commandExecutor;
 
@@ -43,6 +45,13 @@ public class CommandBox extends UiPart<Region> {
             int newLength = (newValue == null) ? 0 : newValue.length();
             boolean isLargeChange = Math.abs(newLength - oldLength) > 1;
             handleHeightChange(!isLargeChange);
+        });
+
+        // Prevent scrolling when content fits
+        commandTextField.addEventFilter(ScrollEvent.SCROLL, event -> {
+            if (!isScrollable) {
+                event.consume();
+            }
         });
 
         // Add listener for Enter key
@@ -88,7 +97,8 @@ public class CommandBox extends UiPart<Region> {
             newHeight = 50;
         }
 
-        double maxHeight = 400; // Updated limit
+        double maxHeight = 200; // aligned with FXML
+        isScrollable = newHeight > maxHeight;
         double targetHeight = Math.min(newHeight, maxHeight);
 
         // Manage scrollbar visibility: show only if content exceeds max height
