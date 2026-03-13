@@ -3,6 +3,7 @@ package seedu.address.ui;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
+import javafx.application.Platform;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ScrollPane;
@@ -98,7 +99,9 @@ public class CommandBox extends UiPart<Region> {
         }
 
         double maxHeight = 200; // aligned with FXML
+        boolean wasScrollable = isScrollable;
         isScrollable = newHeight > maxHeight;
+        boolean transitionedToScrollable = !wasScrollable && isScrollable;
         double targetHeight = Math.min(newHeight, maxHeight);
 
         // Manage scrollbar visibility: show only if content exceeds max height
@@ -111,7 +114,7 @@ public class CommandBox extends UiPart<Region> {
             }
         }
 
-        if (commandTextField.getPrefHeight() != targetHeight) {
+        if (commandTextField.getPrefHeight() != targetHeight || transitionedToScrollable) {
             if (resizeTimeline != null) {
                 resizeTimeline.stop();
             }
@@ -121,7 +124,7 @@ public class CommandBox extends UiPart<Region> {
                         new KeyValue(commandTextField.prefHeightProperty(), targetHeight)));
 
                 // If we are fully expanded (fitting all text), reset scroll to top to ensure first row is visible
-                if (newHeight <= maxHeight) {
+                if (newHeight <= maxHeight || transitionedToScrollable) {
                     resizeTimeline.setOnFinished(event -> commandTextField.setScrollTop(0));
                 }
 
@@ -130,6 +133,8 @@ public class CommandBox extends UiPart<Region> {
                 commandTextField.setPrefHeight(targetHeight);
                 if (newHeight <= maxHeight) {
                     commandTextField.setScrollTop(0);
+                } else if (transitionedToScrollable) {
+                    Platform.runLater(() -> commandTextField.setScrollTop(0));
                 }
             }
         }
