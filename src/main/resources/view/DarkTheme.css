@@ -316,3 +316,8 @@
 .button:disabled {
     -fx-opacity: 0.45;
 }
+
+.cell_big_label {
+    -fx-font-size: 14pt;
+    -fx-font-weight: bold;
+}
