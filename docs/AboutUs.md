@@ -18,6 +18,9 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 [[github](https://github.com/gab4i3l)]
 
+* Role: Developer
+* Responsibilities: Software Engineering
+
 ### Victoria Chew
 
 <img src="images/victoria-chew.png" width="200px">
@@ -26,6 +29,8 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 [[github](https://github.com/victoria-chew)]
 [[portfolio](team/johndoe.md)]
 
+* Role: Developer
+* Responsibilities: Software Engineering
 
 * Role: Project Advisor
 
@@ -35,17 +40,8 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 [[github](http://github.com/Qolivia)]
 
-* Role: Team Lead
-* Responsibilities: UI
-
-### Johnny Doe
-
-<img src="images/johndoe.png" width="200px">
-
-[[github](http://github.com/johndoe)] [[portfolio](team/johndoe.md)]
-
 * Role: Developer
-* Responsibilities: Data
+* Responsibilities: Software Engineering
 
 ### Daren Tan
 
@@ -54,7 +50,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 [[github](http://github.com/darentanrw)]
 
 * Role: Developer
-* Responsibilities:
+* Responsibilities: Software Engineering
 
 ### Qing Rong
 
@@ -63,4 +59,4 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 [[github](https://github.com/QR-Phua)]
 
 * Role: Developer
-* Responsibilities: Software Engineering
+* Responsibilities: Software Engineering, UI
