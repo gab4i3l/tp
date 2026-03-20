@@ -1,217 +1,415 @@
 ---
-  layout: default.md
-  title: "User Guide"
-  pageNav: 3
+layout: default.md
+title: "User Guide"
+pageNav: 3
 ---
 
 # Tuto User Guide
 
-Tuto is a **desktop app for managing contacts, optimized for use via a  Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, AB3 can get your contact management tasks done faster than traditional GUI apps.
+**Tuto** is a desktop app that helps **parents manage a list of freelance tutors** for their children. It is optimised for users who prefer typing commands over clicking through menus, while still providing a clean visual interface to view tutor information at a glance.
+
+> **Who is this guide for?**
+> This guide is written for parents who are comfortable using a keyboard and want to manage tutor contacts efficiently. No prior technical experience is required — if you can open a terminal and type commands, you are ready to use Tuto.
+ 
+---
 
 <!-- * Table of Contents -->
 <page-nav-print />
+ 
+---
 
---------------------------------------------------------------------------------------------------------------------
+## Quick Start
 
-## Quick start
+Follow these steps to get Tuto running on your computer in under 5 minutes.
 
-1. Ensure you have Java `17` or above installed in your Computer.<br>
-   **Mac users:** Ensure you have the precise JDK version prescribed [here](https://se-education.org/guides/tutorials/javaInstallationMac.html).
+### Step 1 — Install Java
 
-1. Download the latest `.jar` file from [here](https://github.com/AY2526S2-CS2103T-T15-3/tp/releases).
+Tuto requires **Java 17 or above**.
 
-1. Copy the file to the folder you want to use as the _home folder_ for your AddressBook.
+- **Windows / Linux:** Download Java 17 from [Adoptium](https://adoptium.net/).
+- **Mac:** Follow the exact installation steps [here](https://se-education.org/guides/tutorials/javaInstallationMac.html), as the standard Mac JDK may not be compatible.
 
-1. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar tuto.jar` command to run the application.<br>
-   A GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.<br>
-   ![Ui](images/Ui.png)
+To verify your Java version, open a terminal and run:
+```
+java -version
+```
+You should see `17` or higher in the output.
+ 
+---
 
-1. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
-   Some example commands you can try:
+### Step 2 — Download Tuto
 
-   * `list` : Lists all contacts.
+Download the latest `tuto.jar` file from the [Tuto releases page](https://github.com/AY2526S2-CS2103T-T15-3/tp/releases).
 
-   * `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01 s/Biology r/45 ` : Adds a contact named `John Doe` to the Address Book.
+Move the file into a dedicated folder (e.g., `~/tuto/`). This folder will store your data going forward.
+ 
+---
 
-   * `delete 3` : Deletes the 3rd contact shown in the current list.
+### Step 3 — Launch Tuto
 
-   * `clear` : Deletes all contacts.
+1. Open a terminal (Command Prompt on Windows, Terminal on Mac/Linux).
+2. Navigate to the folder containing `tuto.jar`:
+   ```
+   cd ~/tuto
+   ```
+3. Run the application:
+   ```
+   java -jar tuto.jar
+   ```
 
-   * `exit` : Exits the app.
+A window similar to the one below should appear within a few seconds, pre-loaded with sample tutor data.
 
-1. Refer to the [Features](#features) below for details of each command.
+![Tuto UI on first launch](images/Ui.png)
+ 
+---
 
---------------------------------------------------------------------------------------------------------------------
+### Step 4 — Try Your First Commands
+
+Type a command into the **Command Box** at the top and press **Enter** to run it. Here are a few to try:
+
+| What you want to do | Command to type |
+|---|---|
+| View all tutors | `list` |
+| Add a new tutor | `add n/Jane Smith p/91234567 e/jane@example.com s/Mathematics r/60` |
+| Find tutors by subject | `find s/Mathematics` |
+| Delete the 1st tutor | `delete 1` |
+| Open help | `help` |
+| Exit the app | `exit` |
+
+> **Tip:** The [Command Summary](#command-summary) at the bottom of this guide is a handy reference once you are familiar with the commands.
+ 
+---
+
+## Understanding the Interface
+
+Tuto's interface has three main areas:
+
+- **Command Box** — where you type your commands
+- **Result Display** — shows feedback after each command (success messages or error details)
+- **Tutor List Panel** — displays all tutor profiles matching the current view
+
+Each tutor card in the panel shows the tutor's name, phone number, email, subject, and hourly rate. Tags (if any) appear as labels on the card.
+ 
+---
 
 ## Features
 
+### Notes on Command Format
+
 <box type="info" seamless>
 
-**Notes about the command format:**<br>
+The following conventions apply to all commands in this guide:
 
-* Words in `UPPER_CASE` are the parameters to be supplied by the user.<br>
-  e.g. in `add n/NAME`, `NAME` is a parameter which can be used as `add n/John Doe`.
+- Words in `UPPER_CASE` are **values you supply**. For example, in `add n/NAME`, replace `NAME` with the tutor's actual name: `add n/John Doe`.
+- Items in `[square brackets]` are **optional**. For example, `[a/ADDRESS]` means the address field can be left out.
+- Items followed by `…` can be **used multiple times or omitted entirely**. For example, `[t/TAG]…` allows zero, one, or more tags: `t/experienced`, `t/experienced t/recommended`.
+- **Parameters can be given in any order.** For example, `n/NAME p/PHONE` and `p/PHONE n/NAME` are both valid.
+- **Extra parameters are ignored** for commands that take none (such as `help`, `list`, `exit`, and `clear`). For example, `help 123` runs as `help`.
 
-* Items in square brackets are optional.<br>
-  e.g `n/NAME [t/TAG]` can be used as `n/John Doe t/friend` or as `n/John Doe`.
+> **Note for PDF users:** If you copy commands from a PDF, line breaks may introduce unexpected spaces. Re-type the command if it does not execute as expected.
 
-* Items with `…`​ after them can be used multiple times including zero times.<br>
-  e.g. `[t/TAG]…​` can be used as ` ` (i.e. 0 times), `t/friend`, `t/friend t/family` etc.
-
-* Parameters can be in any order.<br>
-  e.g. if the command specifies `n/NAME p/PHONE_NUMBER`, `p/PHONE_NUMBER n/NAME` is also acceptable.
-
-* Extraneous parameters for commands that do not take in parameters (such as `help`, `list`, `exit` and `clear`) will be ignored.<br>
-  e.g. if the command specifies `help 123`, it will be interpreted as `help`.
-
-* If you are using a PDF version of this document, be careful when copying and pasting commands that span multiple lines as space characters surrounding line-breaks may be omitted when copied over to the application.
 </box>
+ 
+---
 
-### Viewing help : `help`
+### Viewing Help : `help`
 
-Shows a message explaining how to access the help page.
+Opens a link to this User Guide.
 
-![help message](images/helpMessage.png)
+**Format:** `help`
 
-Format: `help`
+**Expected output:** A pop-up window appears with a link to the online User Guide.
 
+![Help window](images/helpMessage.png)
+ 
+---
 
-### Adding a person: `add`
+### Adding a Tutor : `add`
 
-Adds a person to the address book.
+Adds a new tutor profile to Tuto.
 
-Format: `add n/NAME p/PHONE_NUMBER e/EMAIL [a/ADDRESS] s/SUBJECT r/RATE [t/TAG]…​`
+**Format:**
+```
+add n/NAME p/PHONE_NUMBER e/EMAIL [a/ADDRESS] s/SUBJECT r/RATE [t/TAG]…
+```
+
+| Flag | Field | Required? | Accepted values |
+|---|---|---|---|
+| `n/` | Name | Yes | Any non-empty text |
+| `p/` | Phone number | Yes | Digits only, at least 3 digits |
+| `e/` | Email | Yes | Valid email format (e.g. `user@example.com`) |
+| `a/` | Address | No | Any text |
+| `s/` | Subject | Yes | Any non-empty text (e.g. `Mathematics`, `Biology`) |
+| `r/` | Hourly rate (SGD) | Yes | Positive number |
+| `t/` | Tag | No | Alphanumeric, no spaces |
 
 <box type="tip" seamless>
 
-**Tip:** A person can have any number of tags (including 0).
+**Tip:** You can attach multiple tags to a tutor to help you categorise them, e.g. `t/experienced t/recommended`.
 
 </box>
-
-Examples:
-* `add n/John Doe p/98765432 e/johnd@example.com s/Chemistry r/50`
-* `add n/Betsy Crowe t/friend e/betsycrowe@example.com a/Newgate Prison p/1234567 s/Biology r/ 55 t/criminal`
-
-### Listing all persons : `list`
-
-Shows a list of all persons in the address book.
-
-Format: `list`
-
-### Editing a person : `edit`
-
-Edits an existing person in the address book.
-
-Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [s/SUBJECT] [r/RATE] [t/TAG]…​`
-
-* Edits the person at the specified `INDEX`. The index refers to the index number shown in the displayed person list. The index **must be a positive integer** 1, 2, 3, …​
-* At least one of the optional fields must be provided.
-* Existing values will be updated to the input values.
-* When editing tags, the existing tags of the person will be removed i.e adding of tags is not cumulative.
-* You can remove all the person’s tags by typing `t/` without
-    specifying any tags after it.
-
-Examples:
-*  `edit 1 p/91234567 e/johndoe@example.com` Edits the phone number and email address of the 1st person to be `91234567` and `johndoe@example.com` respectively.
-*  `edit 2 n/Betsy Crower t/` Edits the name of the 2nd person to be `Betsy Crower` and clears all existing tags.
-*  `edit 1 s/Physics r/30` Edits the subject of the 1st person to be `Physics` and the hourly rate to be `30`.
-
-### Locating persons: `find`
-
-Finds persons whose **name**, **rate**, or **subject** match the given keyword.
-
-Format: `find n/NAME_KEYWORD [MORE_NAME_KEYWORDS]`
-Format: `find r/RATE`
-Format: `find s/SUBJECT`
-
-* The search is case-insensitive. e.g `n/hans` will match `Hans`
-* The order of the name keywords does not matter. e.g `n/Hans Bo` will match `Bo Hans`
-* Only full words will be matched for names e.g `n/Han` will not match `Hans`
-* Spaces after the prefix are optional. e.g. `n/Victoria` and `n/ Victoria` both work
-* Persons matching at least one name keyword will be returned (i.e. `OR` search).
-  e.g `n/Hans Bo` will return `Hans Gruber`, `Bo Yang`
-* Rate searches match persons whose rate is exactly the given value.
-* Subject searches match persons who have the specified subject.
-* Only **one search prefix** (`n/`, `r/`, or `s/`) can be used in a single command.
-
-Examples:
-
-* `find n/John` returns `john` and `John Doe`
-* `find r/17` returns persons whose payment rate per hour is `17`
-* `find s/Math` returns persons who have the subject `Math`<br>
-* `find n/alex david` returns `Alex Yeoh`, `David Li`
-
-![result for 'find n/alex david'](images/findAlexDavidResult.png)
-
-### Deleting a person : `delete`
-
-Deletes the specified person from the address book.
-
-Format: `delete INDEX`
-
-* Deletes the person at the specified `INDEX`.
-* The index refers to the index number shown in the displayed person list.
-* The index **must be a positive integer** 1, 2, 3, …​
-
-Examples:
-* `list` followed by `delete 2` deletes the 2nd person in the address book.
-* `find Betsy` followed by `delete 1` deletes the 1st person in the results of the `find` command.
-
-### Clearing all entries : `clear`
-
-Clears all entries from the address book.
-
-Format: `clear`
-
-### Exiting the program : `exit`
-
-Exits the program.
-
-Format: `exit`
-
-### Saving the data
-
-AddressBook data are saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
-
-### Editing the data file
-
-AddressBook data are saved automatically as a JSON file `[JAR file location]/data/addressbook.json`. Advanced users are welcome to update data directly by editing that data file.
 
 <box type="warning" seamless>
 
-**Caution:**
-If your changes to the data file makes its format invalid, AddressBook will discard all data and start with an empty data file at the next run.  Hence, it is recommended to take a backup of the file before editing it.<br>
-Furthermore, certain edits can cause the AddressBook to behave in unexpected ways (e.g., if a value entered is outside the acceptable range). Therefore, edit the data file only if you are confident that you can update it correctly.
+**Note:** Adding a tutor with the same name as an existing entry is not allowed. Tuto treats this as a duplicate. If two tutors happen to share a name, consider using a distinguishing tag or a middle initial to differentiate them.
+
 </box>
 
-### Archiving data files `[coming in v2.0]`
+**Examples:**
+```
+add n/John Doe p/98765432 e/johnd@example.com s/Chemistry r/50
+```
+Adds John Doe as a Chemistry tutor charging $50/hr, with no address or tags.
 
-_Details coming soon ..._
+```
+add n/Betsy Crowe p/1234567 e/betsycrowe@example.com a/Newgate Prison s/Biology r/55 t/experienced t/recommended
+```
+Adds Betsy Crowe as a Biology tutor with an address and two tags.
 
---------------------------------------------------------------------------------------------------------------------
+**Expected output:**
+```
+New person added: John Doe; Phone: 98765432; Email: johnd@example.com; Address: ; Subject: Chemistry; Rate: 50; Tags:
+```
+ 
+---
+
+### Listing All Tutors : `list`
+
+Displays all tutor profiles stored in Tuto.
+
+**Format:** `list`
+
+**Expected output:** The Tutor List Panel refreshes to show all contacts. The Result Display shows the number of tutors listed.
+
+> **Tip:** Use `list` to reset the view after a `find` command has filtered your results.
+ 
+---
+
+### Editing a Tutor Profile : `edit`
+
+Updates one or more fields of an existing tutor profile.
+
+**Format:**
+```
+edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [s/SUBJECT] [r/RATE] [t/TAG]…
+```
+
+- `INDEX` refers to the number shown next to the tutor in the current list. It must be a **positive integer** (1, 2, 3 …).
+- At least one field must be provided.
+- Existing values are replaced with the new values you provide.
+
+<box type="warning" seamless>
+
+**Note:** Editing tags **replaces all existing tags** — it does not add to them. To remove all tags, use `t/` with nothing after it. To keep existing tags while adding a new one, you must retype all the tags you want to keep.
+
+</box>
+
+**Examples:**
+```
+edit 1 p/91234567 e/johndoe@example.com
+```
+Updates the phone number and email of the 1st tutor in the list.
+
+```
+edit 2 n/Betsy Crower t/
+```
+Renames the 2nd tutor and removes all of their tags.
+
+```
+edit 1 s/Physics r/30
+```
+Changes the 1st tutor's subject to Physics and rate to $30/hr.
+
+**Expected output:**
+```
+Edited Person: John Doe; Phone: 91234567; Email: johndoe@example.com; Address: ; Subject: Chemistry; Rate: 50; Tags:
+```
+ 
+---
+
+### Finding Tutors : `find`
+
+Searches for tutors by name, subject, or hourly rate.
+
+**Format:**
+```
+find n/NAME_KEYWORD [MORE_NAME_KEYWORDS]
+find s/SUBJECT
+find r/RATE
+```
+
+- Only **one search prefix** (`n/`, `s/`, or `r/`) can be used per command.
+- Name searches are **case-insensitive** and match full words only. For example, `find n/Hans` will match `Hans Gruber` but not `Hansen`.
+- Multiple name keywords return tutors matching **any** of the keywords (OR logic). For example, `find n/Hans Bo` returns all tutors named Hans or Bo.
+- Subject searches return tutors whose subject matches exactly (case-insensitive).
+- Rate searches return tutors whose rate matches exactly.
+- Spaces after the prefix are optional. `find n/John` and `find n/ John` both work.
+
+<box type="tip" seamless>
+
+**Tip:** After a `find`, use `list` to return to the full tutor list.
+
+</box>
+
+**Examples:**
+```
+find n/John
+```
+Returns all tutors with "John" in their name, e.g. `John Doe`, `John Tan`.
+
+```
+find s/Mathematics
+```
+Returns all tutors who teach Mathematics.
+
+```
+find r/50
+```
+Returns all tutors charging exactly $50/hr.
+
+```
+find n/Alex David
+```
+Returns tutors named Alex or David.
+
+![Result for 'find n/alex david'](images/findAlexDavidResult.png)
+
+**Expected output:**
+```
+2 persons listed!
+```
+ 
+---
+
+### Deleting a Tutor : `delete`
+
+Permanently removes a tutor profile from Tuto.
+
+**Format:** `delete INDEX`
+
+- `INDEX` must be a **positive integer** matching a tutor's position in the currently displayed list.
+
+<box type="warning" seamless>
+
+**Caution:** Deletion is permanent and cannot be undone. Double-check the index before running this command.
+
+</box>
+
+**Examples:**
+```
+list
+delete 2
+```
+Deletes the 2nd tutor in the full list.
+
+```
+find s/Biology
+delete 1
+```
+Deletes the 1st tutor returned in the Biology search results.
+
+**Expected output:**
+```
+Deleted Person: Betsy Crowe; Phone: 1234567; ...
+```
+ 
+---
+
+### Clearing All Tutors : `clear`
+
+Removes **all** tutor profiles from Tuto.
+
+**Format:** `clear`
+
+<box type="warning" seamless>
+
+**Caution:** This action permanently deletes all data and cannot be undone. Consider [backing up your data file](#editing-the-data-file) before running this command.
+
+</box>
+
+**Expected output:**
+```
+Address book has been cleared!
+```
+ 
+---
+
+### Exiting Tuto : `exit`
+
+Closes the application.
+
+**Format:** `exit`
+
+Your data is saved automatically — there is no need to save before exiting.
+ 
+---
+
+### Saving Your Data
+
+Tuto saves all tutor data automatically to a JSON file after every command that changes your data. The file is located at:
+
+```
+[folder containing tuto.jar]/data/addressbook.json
+```
+
+No manual saving is needed.
+ 
+---
+
+### Editing the Data File Directly
+
+Advanced users may edit the data file manually using any text editor.
+
+<box type="warning" seamless>
+
+**Caution:** If the file is saved in an invalid format, Tuto will discard all data and start fresh on the next launch. **Back up the file before making any edits.** Additionally, values outside accepted ranges may cause Tuto to behave unexpectedly.
+
+</box>
+ 
+---
+
+### Archiving Data `[coming in v2.0]`
+
+_Details coming soon._
+ 
+---
 
 ## FAQ
 
-**Q**: How do I transfer my data to another Computer?<br>
-**A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous AddressBook home folder.
+**Q: How do I move my tutor data to a new computer?**
 
---------------------------------------------------------------------------------------------------------------------
+A: Install Tuto on the new computer and run it once to generate the default data folder. Then copy the `addressbook.json` file from your old computer into the `data/` folder on the new one, replacing the empty file.
+ 
+---
 
-## Known issues
+**Q: Tuto opened off-screen after I disconnected an external monitor. What do I do?**
 
-1. **When using multiple screens**, if you move the application to a secondary screen, and later switch to using only the primary screen, the GUI will open off-screen. The remedy is to delete the `preferences.json` file created by the application before running the application again.
-2. **If you minimize the Help Window** and then run the `help` command (or use the `Help` menu, or the keyboard shortcut `F1`) again, the original Help Window will remain minimized, and no new Help Window will appear. The remedy is to manually restore the minimized Help Window.
+A: Delete the `preferences.json` file in the same folder as `tuto.jar`, then relaunch the app. This resets the window position.
+ 
+---
 
---------------------------------------------------------------------------------------------------------------------
+**Q: I ran `help` again but the Help Window did not appear. Why?**
 
-## Command summary
+A: The Help Window may be minimised. Check your taskbar and restore it manually.
+ 
+---
 
-Action     | Format, Examples
------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------
-**Add**    | `add n/NAME p/PHONE_NUMBER e/EMAIL [a/ADDRESS] s/SUBJECT r/RATE [t/TAG]…​` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 s/Biology r/45 t/friend t/colleague`
-**Clear**  | `clear`
-**Delete** | `delete INDEX`<br> e.g., `delete 3`
-**Edit**   | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [s/SUBJECT] [r/RATE] [t/TAG]…​`<br> e.g., `edit 2 n/James Lee e/jameslee@example.com`, `edit 1 s/Math r/25`
-**Find** | `find n/NAME_KEYWORD [MORE_NAME_KEYWORDS]` \| `find r/RATE` \| `find s/SUBJECT`<br> e.g. `find n/James Jake`, `find r/25`, `find s/Biology`
-**List**   | `list`
-**Help**   | `help`
+## Known Issues
+
+1. **Off-screen window after disconnecting a monitor:** Delete `preferences.json` and relaunch Tuto to reset window position.
+2. **Help Window does not reappear:** If the Help Window is minimised, running `help` again will not open a new one. Restore the minimised window from your taskbar.
+
+---
+
+## Command Summary
+
+| Action | Format | Example |
+|---|---|---|
+| **Help** | `help` | `help` |
+| **Add** | `add n/NAME p/PHONE e/EMAIL [a/ADDRESS] s/SUBJECT r/RATE [t/TAG]…` | `add n/James Ho p/22224444 e/james@example.com s/Biology r/45` |
+| **List** | `list` | `list` |
+| **Edit** | `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [s/SUBJECT] [r/RATE] [t/TAG]…` | `edit 2 n/James Lee e/james@example.com` |
+| **Find** | `find n/KEYWORD…` \| `find s/SUBJECT` \| `find r/RATE` | `find n/James`, `find s/Biology`, `find r/45` |
+| **Delete** | `delete INDEX` | `delete 3` |
+| **Clear** | `clear` | `clear` |
+| **Exit** | `exit` | `exit` |
