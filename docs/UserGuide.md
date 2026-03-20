@@ -1,22 +1,48 @@
 ---
-  layout: default.md
-  title: "User Guide"
-  pageNav: 3
+layout: default.md
+title: "User Guide"
+pageNav: 3
 ---
 
 # Tuto User Guide
 
 Tuto is a **desktop app for managing contacts, optimized for use via a  Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, AB3 can get your contact management tasks done faster than traditional GUI apps.
 
-<!-- * Table of Contents -->
-<page-nav-print />
+# Table of Contents
+
+- [Quick start](#quick-start)
+  - [Step 1 — Install Java](#step-1-install-java)
+  - [Step 2 — Download Tuto](#step-2-download-tuto)
+  - [Step 3 — Launch Tuto](#step-3-launch-tuto)
+  - [Step 4 — Try Your First Commands](#step-4-try-your-first-commands)
+
+- [Understanding the Interface](#understanding-the-interface)
+
+- [Features](#features)
+  - [Notes on Command Format](#notes-on-command-format)
+  - [Viewing Help (`help`)](#viewing-help)
+  - [Adding a Tutor (`add`)](#adding-a-person-add)
+  - [Listing All Tutors (`list`)](#listing-all-tutors-list)
+  - [Editing a Tutor Profile (`edit`)](#editing-a-tutor-profile-edit)
+  - [Finding Tutors (`find`)](#finding-tutors-find)
+  - [Deleting a Tutor (`delete`)](#deleting-a-tutor-delete)
+  - [Clearing All Tutors (`clear`)](#clearing-all-tutors-clear)
+  - [Exiting Tuto (`exit`)](#exiting-tuto-exit)
+  - [Saving Your Data](#saving-your-data)
+  - [Editing the Data File Directly](#editing-the-data-file-directly)
+
+- [FAQ](#faq)
+- [Known Issues](#known-issues)
+- [Command summary](#command-summary)
 
 --------------------------------------------------------------------------------------------------------------------
 
+<a id="quick-start"></a>
 ## Quick start
 
 Follow these steps to get Tuto running on your computer in under 5 minutes.
 
+<a id="step-1-install-java"></a>
 ### Step 1 — Install Java
 
 Tuto requires **Java 17 or above**.
@@ -30,12 +56,14 @@ java -version
 ```
 You should see `17` or higher in the output.
 
+<a id="step-2-download-tuto"></a>
 ### Step 2 — Download Tuto
 
 Download the latest `tuto.jar` file from the [Tuto releases page](https://github.com/AY2526S2-CS2103T-T15-3/tp/releases).
 
 Move the file into a dedicated folder (e.g., `~/tuto/`). This folder will store your data going forward.
 
+<a id="step-3-launch-tuto"></a>
 ### Step 3 — Launch Tuto
 
 1. Open a terminal (Command Prompt on Windows, Terminal on Mac/Linux).
@@ -52,6 +80,7 @@ A window similar to the one below should appear within a few seconds, pre-loaded
 
 ![Tuto UI on first launch](images/Ui.png)
 
+<a id="step-4-try-your-first-commands"></a>
 ### Step 4 — Try Your First Commands
 
 Type a command into the **Command Box** at the top and press **Enter** to run it. Here are a few to try:
@@ -67,6 +96,7 @@ Type a command into the **Command Box** at the top and press **Enter** to run it
 
 > **Tip:** The [Command Summary](#command-summary) at the bottom of this guide is a handy reference once you are familiar with the commands.
 
+<a id="understanding-the-interface"></a>
 ## Understanding the Interface
 
 Tuto's interface has three main areas:
@@ -79,8 +109,10 @@ Each tutor card in the panel shows the tutor's name, phone number, email, subjec
 
 --------------------------------------------------------------------------------------------------------------------
 
+<a id="features"></a>
 ## Features
 
+<a id="notes-on-command-format"></a>
 ### Notes on Command Format
 
 <box type="info" seamless>
@@ -97,6 +129,7 @@ The following conventions apply to all commands in this guide:
 
 </box>
 
+<a id="viewing-help"></a>
 ### Viewing Help : `help`
 
 Opens a link to this User Guide.
@@ -107,6 +140,7 @@ Opens a link to this User Guide.
 
 ![help message](images/helpMessage.png)
 
+<a id="adding-a-person-add"></a>
 ### Adding a person: `add`
 
 Adds a person to the address book.
@@ -157,6 +191,7 @@ Adds Betsy Crowe as a Biology tutor with an address and two tags.
 ```
 New person added: John Doe; Phone: 98765432; Email: johnd@example.com; Address: ; Subject: Chemistry; Rate: 50; Tags:
 ```
+<a id="listing-all-tutors-list"></a>
 ### Listing All Tutors : `list`
 
 Displays all tutor profiles stored in Tuto.
@@ -167,6 +202,7 @@ Displays all tutor profiles stored in Tuto.
 
 > **Tip:** Use `list` to reset the view after a `find` command has filtered your results.
 
+<a id="editing-a-tutor-profile-edit"></a>
 ### Editing a Tutor Profile : `edit`
 
 Updates one or more fields of an existing tutor profile.
@@ -206,6 +242,7 @@ Changes the 1st tutor's subject to Physics and rate to $30/hr.
 ```
 Edited Person: John Doe; Phone: 91234567; Email: johndoe@example.com; Address: ; Subject: Chemistry; Rate: 50; Tags:
 ```
+<a id="finding-tutors-find"></a>
 ### Finding Tutors : `find`
 
 Searches for tutors by name, subject, or hourly rate.
@@ -258,6 +295,7 @@ Returns tutors named Alex or David.
 2 persons listed!
 ```
 
+<a id="deleting-a-tutor-delete"></a>
 ### Deleting a Tutor : `delete`
 
 Permanently removes a tutor profile from Tuto.
@@ -290,6 +328,7 @@ Deletes the 1st tutor returned in the Biology search results.
 Deleted Person: Betsy Crowe; Phone: 1234567; ...
 ```
 
+<a id="clearing-all-tutors-clear"></a>
 ### Clearing All Tutors : `clear`
 
 Removes **all** tutor profiles from Tuto.
@@ -307,6 +346,7 @@ Removes **all** tutor profiles from Tuto.
 Address book has been cleared!
 ```
 
+<a id="exiting-tuto-exit"></a>
 ### Exiting Tuto : `exit`
 
 Closes the application.
@@ -315,6 +355,7 @@ Closes the application.
 
 Your data is saved automatically — there is no need to save before exiting.
 
+<a id="saving-your-data"></a>
 ### Saving Your Data
 
 Tuto saves all tutor data automatically to a JSON file after every command that changes your data. The file is located at:
@@ -325,6 +366,8 @@ Tuto saves all tutor data automatically to a JSON file after every command that 
 
 No manual saving is needed.
 
+<a id="editing-the-data-file"></a>
+<a id="editing-the-data-file-directly"></a>
 ### Editing the Data File Directly
 
 Advanced users may edit the data file manually using any text editor.
