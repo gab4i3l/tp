@@ -25,6 +25,7 @@ import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.person.NameContainsKeywordsPredicate;
 import seedu.address.model.person.Person;
+import seedu.address.model.person.UniversalSearchPredicate;
 
 /**
  * Contains integration tests (interaction with the Model) for {@code FindCommand}.
@@ -95,6 +96,32 @@ public class FindCommandTest {
         CommandResult expectedCommandResult = new CommandResult(expectedMessage, expectedPairs);
 
         NameContainsKeywordsPredicate predicate = preparePredicate("Kurz Elle Kunz");
+        FindCommand command = new FindCommand(predicate);
+        expectedModel.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
+
+        assertCommandSuccess(command, model, expectedCommandResult, expectedModel);
+        assertEquals(expectedModel.getFilteredPersonList(), model.getFilteredPersonList());
+    }
+
+    @Test
+    public void execute_universalSearch_personFound() {
+        // Search for "Physics" (Carl), "Bio" (Elle - prefix), "60" (Fiona - rate)
+        List<Person> foundPersons = Arrays.asList(CARL, ELLE, FIONA);
+        List<PersonIndexPair> expectedPairs = new ArrayList<>();
+        StringBuilder sb = new StringBuilder();
+        sb.append(String.format(MESSAGE_PERSONS_LISTED_OVERVIEW, foundPersons.size()));
+
+        List<Person> allPersons = expectedModel.getAddressBook().getPersonList();
+        for (Person p : foundPersons) {
+            int index = allPersons.indexOf(p) + 1;
+            sb.append("\n").append(index).append(". ").append(Messages.format(p));
+            expectedPairs.add(new PersonIndexPair(p, index));
+        }
+        String expectedMessage = sb.toString();
+
+        CommandResult expectedCommandResult = new CommandResult(expectedMessage, expectedPairs);
+
+        UniversalSearchPredicate predicate = new UniversalSearchPredicate(Arrays.asList("Physics", "Bio", "60"));
         FindCommand command = new FindCommand(predicate);
         expectedModel.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
 

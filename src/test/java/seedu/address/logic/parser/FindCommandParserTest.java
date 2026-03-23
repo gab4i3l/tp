@@ -26,9 +26,29 @@ public class FindCommandParserTest {
     }
 
     @Test
-    public void parse_invalidPreamble_throwsParseException() {
-        assertParseFailure(parser, " garbage n/Alice",
-                String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindCommand.MESSAGE_USAGE));
+    public void parse_universalOnly_returnsFindCommand() throws Exception {
+        FindCommand command = parser.parse(" Bob");
+        // Preamble is "Bob"
+
+        Person bob = new PersonBuilder().withName("Bob Tan").build();
+        Person alice = new PersonBuilder().withName("Alice").build();
+
+        assertTrue(command.getPredicate().test(bob));
+        assertFalse(command.getPredicate().test(alice));
+    }
+
+    @Test
+    public void parse_universalAndPrefix_returnsCombinedFindCommand() throws Exception {
+        FindCommand command = parser.parse(" Bob s/Math");
+        // Universal "Bob" AND Subject "Math"
+
+        Person bobMath = new PersonBuilder().withName("Bob").withSubject("Math").build();
+        Person bobSci = new PersonBuilder().withName("Bob").withSubject("Science").build(); // matches Universal but not Subject
+        Person aliceMath = new PersonBuilder().withName("Alice").withSubject("Math").build(); // matches Subject but not Universal (Alice doesn't contain "Bob")
+
+        assertTrue(command.getPredicate().test(bobMath));
+        assertFalse(command.getPredicate().test(bobSci));
+        assertFalse(command.getPredicate().test(aliceMath));
     }
 
     @Test
