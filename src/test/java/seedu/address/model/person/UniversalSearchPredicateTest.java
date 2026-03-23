@@ -60,7 +60,7 @@ public class UniversalSearchPredicateTest {
         // Subject match (prefix)
         predicate = new UniversalSearchPredicate(Collections.singletonList("Mat"));
         assertTrue(predicate.test(new PersonBuilder().withSubject("Math").build()));
-        
+
         // Rate match (prefix)
         predicate = new UniversalSearchPredicate(Collections.singletonList("5"));
         assertTrue(predicate.test(new PersonBuilder().withRate("50").build()));
@@ -68,7 +68,7 @@ public class UniversalSearchPredicateTest {
         // Tag match (prefix)
         predicate = new UniversalSearchPredicate(Collections.singletonList("fri"));
         assertTrue(predicate.test(new PersonBuilder().withTags("friend").build()));
-        
+
         // Multiple keywords, one matches
         predicate = new UniversalSearchPredicate(Arrays.asList("NoMatch", "Ali"));
         assertTrue(predicate.test(new PersonBuilder().withName("Alice Bob").build()));

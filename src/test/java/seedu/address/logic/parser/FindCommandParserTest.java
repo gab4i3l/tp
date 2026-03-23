@@ -43,8 +43,12 @@ public class FindCommandParserTest {
         // Universal "Bob" AND Subject "Math"
 
         Person bobMath = new PersonBuilder().withName("Bob").withSubject("Math").build();
-        Person bobSci = new PersonBuilder().withName("Bob").withSubject("Science").build(); // matches Universal but not Subject
-        Person aliceMath = new PersonBuilder().withName("Alice").withSubject("Math").build(); // matches Subject but not Universal (Alice doesn't contain "Bob")
+
+        // matches Universal but not Subject
+        Person bobSci = new PersonBuilder().withName("Bob").withSubject("Science").build();
+
+        // matches Subject but not Universal (Alice doesn't contain "Bob")
+        Person aliceMath = new PersonBuilder().withName("Alice").withSubject("Math").build();
 
         assertTrue(command.getPredicate().test(bobMath));
         assertFalse(command.getPredicate().test(bobSci));
