@@ -18,23 +18,31 @@ This guide is written for parents who are comfortable using a keyboard and want 
 ---
 ## Table of Contents
 
-* [Quick Start](#quick-start)
-* [Understanding the Interface](#understanding-the-interface)
-* [Features](#features)
-    * [Viewing Help](#viewing-help-help)
-    * [Adding a Tutor](#adding-a-tutor-add)
-    * [Listing All Tutors](#listing-all-tutors-list)
-    * [Sorting the Tutor List](#sorting-the-tutor-list-sort)
-    * [Editing a Tutor Profile](#editing-a-tutor-profile-edit)
-    * [Finding Tutors](#finding-tutors-find)
-    * [Deleting a Tutor](#deleting-a-tutor-delete)
-    * [Clearing All Tutors](#clearing-all-tutors-clear)
-    * [Exiting Tuto](#exiting-tuto-exit)
-    * [Saving Your Data](#saving-your-data)
-    * [Editing the Data File Directly](#editing-the-data-file-directly)
-* [FAQ](#faq)
-* [Known Issues](#known-issues)
-* [Command Summary](#command-summary)
+- [Tuto User Guide](#tuto-user-guide)
+  - [Table of Contents](#table-of-contents)
+  - [Quick Start](#quick-start)
+    - [Step 1 — Install Java](#step-1--install-java)
+    - [Step 2 — Download Tuto](#step-2--download-tuto)
+    - [Step 3 — Launch Tuto](#step-3--launch-tuto)
+    - [Step 4 — Try Your First Commands](#step-4--try-your-first-commands)
+  - [Understanding the Interface](#understanding-the-interface)
+  - [Features](#features)
+    - [Notes on Command Format](#notes-on-command-format)
+    - [Viewing Help : `help`](#viewing-help--help)
+    - [Clearing all entries: `clear`](#clearing-all-entries-clear)
+    - [Adding a Tutor : `add`](#adding-a-tutor--add)
+    - [Listing All Tutors : `list`](#listing-all-tutors--list)
+    - [Sorting the Tutor List : `sort`](#sorting-the-tutor-list--sort)
+    - [Editing a Tutor Profile : `edit`](#editing-a-tutor-profile--edit)
+    - [Finding Tutors : `find`](#finding-tutors--find)
+    - [Deleting a Tutor : `delete`](#deleting-a-tutor--delete)
+    - [Exiting the program : `exit`](#exiting-the-program--exit)
+    - [Saving Your Data](#saving-your-data)
+  - [](#)
+    - [Editing the Data File Directly](#editing-the-data-file-directly)
+  - [FAQ](#faq)
+  - [Known Issues](#known-issues)
+  - [Command Summary](#command-summary)
 ---
 
 ## Quick Start
@@ -170,14 +178,22 @@ Opens a link to this User Guide.
 
 ---
 
+### Clearing all entries: `clear`
+
+Clears all entries from the address book.
+
+![clear message](images/clearMessage.png)
+
+Format: `clear`
+
+---
 ### Adding a Tutor : `add`
 
 Adds a new tutor profile to Tuto.
 
-**Format:**
-```
-add n/NAME p/PHONE_NUMBER e/EMAIL [a/ADDRESS] s/SUBJECT r/RATE [t/TAG]…
-```
+![add message](images/addMessage.png)
+
+Format: `add n/NAME p/PHONE_NUMBER e/EMAIL s/SUBJECT1 s/SUBJECT2 ... s/SUBJECTn r/RATE [a/ADDRESS] [t/TAG]…​`
 
 | Flag | Field | Required? | Accepted values |
 |---|---|---|---|
@@ -191,8 +207,11 @@ add n/NAME p/PHONE_NUMBER e/EMAIL [a/ADDRESS] s/SUBJECT r/RATE [t/TAG]…
 
 <box type="tip" seamless>
 
-**Tip:** Tags are powerful ways to organise contacts. You can use multiple tags in a tutor contact to provide more information, e.g. `t/home` for home tutoring 
+**Tip:** 
+  1. Tags are powerful ways to organise contacts. You can use multiple tags in a tutor contact to provide more information, e.g. `t/home` for home tutoring 
 services. 
+  2. A person can have any number of tags (including 0) and more than one subjects.
+  3. The parameters of the command can be entered in any orders.
 
 </box>
 
@@ -224,6 +243,8 @@ New person added: John Doe; Phone: 98765432; Email: johnd@example.com; Address: 
 ### Listing All Tutors : `list`
 
 Displays all tutor profiles stored in Tuto.
+
+![list message](images/listMessage.png)
 
 **Format:** `list`
 
@@ -319,7 +340,6 @@ Edited Person: John Doe; Phone: 91234567; Email: johndoe@example.com; Address: ;
 ```
 
 ---
-
 ### Finding Tutors : `find`
 
 Searches for tutors by name, subject, or hourly rate.
@@ -381,13 +401,16 @@ Returns tutors named Alex or David.
 
 Permanently removes a tutor profile from Tuto.
 
-**Format:** `delete INDEX`
+![delete message](images/deleteMessage.png)
+
+Format: `delete INDEX`
 
 * `INDEX` must be a **positive integer** matching a tutor's position in the currently displayed list.
 * After you delete someone, **every tutor below that row moves up** and gets a new index. After a **`sort`**, positions change too. See [Displayed indices change after `sort` and `delete`](#notes-on-command-format).
 
 <box type="warning" seamless>
 
+### Exiting the program : `exit`
 **Caution:** Deletion is permanent and cannot be undone. Double-check the index before running this command.
 
 </box>
@@ -412,47 +435,17 @@ Deleted Person: Betsy Crowe; Phone: 1234567; Email: betsycrowe@example.com; Addr
 ```
 
 ---
+### Saving Your Data
 
-### Clearing All Tutors : `clear`
-
-Removes **all** tutor profiles from Tuto.
-
-**Format:** `clear`
+Tuto's data are saved automatically as a JSON file `[JAR file location]/data/Tuto.json`. Advanced users are welcome to update data directly by editing that data file.
 
 <box type="warning" seamless>
 
-**Caution:** This action permanently deletes all data and cannot be undone. Consider [backing up your data file](#editing-the-data-file-directly) before running this command.
-
+**Caution:**
+If your changes to the data file makes its format invalid, Tuto will discard all data and start with an empty data file at the next run.  Hence, it is recommended to take a backup of the file before editing it.<br>
+Furthermore, certain edits can cause the Tuto to behave in unexpected ways (e.g., if a value entered is outside the acceptable range). Therefore, edit the data file only if you are confident that you can update it correctly.
 </box>
-
-**Expected output:**
-```
-Address book has been cleared!
-```
-
----
-
-### Exiting Tuto : `exit`
-
-Closes the application.
-
-**Format:** `exit`
-
-Your data is saved automatically — there is no need to save before exiting.
-
----
-
-### Saving Your Data
-
-Tuto saves all tutor data automatically to a JSON file after every command that changes your data. The file is located at:
-
-```
-[folder containing tuto.jar]/data/addressbook.json
-```
-
-No manual saving is needed.
-
----
+--------------------------------------------------------------------------------------------------------------------
 
 ### Editing the Data File Directly
 
@@ -498,7 +491,7 @@ A: The Help Window may be minimised. Check your taskbar and restore it manually.
 | Action | Format | Example |
 |---|---|---|
 | **Help** | `help` | `help` |
-| **Add** | `add n/NAME p/PHONE e/EMAIL [a/ADDRESS] s/SUBJECT r/RATE [t/TAG]…` | `add n/James Ho p/22224444 e/james@example.com s/Biology r/45` |
+| **Add** | `add n/NAME p/PHONE_NUMBER e/EMAIL s/SUBJECT1 s/SUBJECT2 ... s/SUBJECTn r/RATE [a/ADDRESS] [t/TAG]…​` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 s/Biology r/45 t/friend t/colleague`|
 | **List** | `list` | `list` |
 | **Sort** | `sort FIELD ORDER` | `sort name asc`, `sort rate desc` |
 | **Edit** | `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [s/SUBJECT] [r/RATE] [t/TAG]…` | `edit 2 n/James Lee e/james@example.com` |
