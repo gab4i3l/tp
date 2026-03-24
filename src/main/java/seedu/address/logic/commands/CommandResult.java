@@ -43,7 +43,8 @@ public class CommandResult {
     }
 
     /**
-     * Constructs a {@code CommandResult} with the specified {@code feedbackToUser} and list of found persons.
+     * Constructs a {@code CommandResult} with the specified {@code feedbackToUser}
+     * and list of found persons.
      */
     public CommandResult(String feedbackToUser, List<PersonIndexPair> foundPersons) {
         this.feedbackToUser = requireNonNull(feedbackToUser);
@@ -104,7 +105,7 @@ public class CommandResult {
     }
 
     /**
-     * Represents a pair of a person and their original index in the full list.
+     * Represents a pair of a person and their index in the displayed list.
      */
     public static class PersonIndexPair {
         public final Person person;

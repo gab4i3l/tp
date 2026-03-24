@@ -26,7 +26,8 @@ import seedu.address.testutil.EditPersonDescriptorBuilder;
 import seedu.address.testutil.PersonBuilder;
 
 /**
- * Contains integration tests (interaction with the Model) for {@code SortCommand}.
+ * Contains integration tests (interaction with the Model) for
+ * {@code SortCommand}.
  */
 public class SortCommandTest {
 
@@ -118,8 +119,7 @@ public class SortCommandTest {
 
         Person firstSorted = model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
         Person editedPerson = new PersonBuilder(firstSorted).withName("Zzzz Zebra").build();
-        EditCommand.EditPersonDescriptor descriptor =
-                new EditPersonDescriptorBuilder().withName("Zzzz Zebra").build();
+        EditCommand.EditPersonDescriptor descriptor = new EditPersonDescriptorBuilder().withName("Zzzz Zebra").build();
         EditCommand editCommand = new EditCommand(INDEX_FIRST_PERSON, descriptor);
 
         Model expectedAfterEdit = new ModelManager(new AddressBook(model.getAddressBook()), new UserPrefs());

@@ -46,8 +46,7 @@ public class FindCommand extends Command {
         requireNonNull(model);
         model.updateFilteredPersonList(Model.PREDICATE_SHOW_ALL_PERSONS);
         ObservableList<Person> displayedPersons = model.getFilteredPersonList();
-        ObservableList<Person> allPersons = model.getAddressBook().getPersonList();
-        List<Person> foundPersons = allPersons.stream()
+        List<Person> foundPersons = displayedPersons.stream()
                 .filter(predicate)
                 .collect(Collectors.toList());
 
