@@ -12,7 +12,14 @@ import java.util.function.Predicate;
 
 import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.person.*;
+import seedu.address.model.person.NameContainsKeywordsPredicate;
+import seedu.address.model.person.Person;
+import seedu.address.model.person.Rate;
+import seedu.address.model.person.RateEqualsPredicate;
+import seedu.address.model.person.RateGreaterThanPredicate;
+import seedu.address.model.person.RateLessThanPredicate;
+import seedu.address.model.person.RateRangePredicate;
+import seedu.address.model.person.Subject;
 
 /**
  * Parses input arguments and creates a new FindCommand object.
