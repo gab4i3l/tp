@@ -43,6 +43,15 @@ public class FindCommand extends Command {
     private final String findDescription;
 
     /**
+     * Creates a FindCommand with the given predicate.
+     *
+     * @param predicate Predicate to filter persons
+     */
+    public FindCommand(Predicate<Person> predicate) {
+        this(predicate, "");
+    }
+
+    /**
      * Creates a FindCommand with the given predicate and description.
      *
      * @param predicate Predicate to filter persons
