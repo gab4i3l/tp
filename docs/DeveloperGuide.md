@@ -168,6 +168,51 @@ Classes used by multiple components are in the `seedu.address.commons` package.
 
 This section describes some noteworthy details on how certain features are implemented.
 
+### Uniqueness Constraints
+
+To ensure data integrity, the application enforces uniqueness constraints on each `Person`.
+
+#### Current Implementation
+
+The uniqueness of a `Person` is determined by the following fields:
+- Name
+- Phone number
+- Email address
+
+The system prevents duplicates by checking these fields in `UniquePersonList` before adding or editing a person.
+
+If any of the following conditions are met:
+- A person with the same name already exists
+- A person with the same phone number already exists
+- A person with the same email address already exists
+
+The operation is rejected and an appropriate error message is shown to the user.
+
+Duplicate checks are performed in the following priority:
+1. Name
+2. Phone number
+3. Email address
+
+This ensures that name conflicts are detected first, followed by contact information conflicts.
+
+#### Design Considerations
+
+**Aspect: What defines a duplicate person**
+
+- **Alternative 1 (current choice):** Use name, phone, and email as uniqueness constraints
+    - Pros: Prevents duplicate entries effectively and maintains clean data
+    - Cons: May be restrictive in cases where users share names or contact details
+
+- **Alternative 2:** Use full object equality
+    - Pros: Simpler implementation
+    - Cons: Allows duplicate entries with identical contact details
+
+#### Sequence Diagram
+
+The following diagram illustrates how duplicate checks are performed during an `add` or `edit` operation:
+
+<puml src="diagrams/UniquenessConstraintSequence.puml" />
+
 ### \[Proposed\] Undo/redo feature
 
 #### Proposed Implementation
