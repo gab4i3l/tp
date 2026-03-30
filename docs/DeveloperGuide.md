@@ -208,6 +208,17 @@ This ensures that name conflicts are detected first, followed by contact informa
     - Pros: Simpler implementation
     - Cons: Allows duplicate entries with identical contact details
 
+#### Class Diagram
+
+The following class diagram shows the key classes involved in enforcing uniqueness constraints,
+and how they interact structurally.
+
+`AddCommand` and `EditCommand` depend on the `Model` interface to perform duplicate checks.
+`ModelManager` implements `Model` and delegates to `AddressBook`, which contains a
+`UniquePersonList` that stores all `Person` objects.
+
+<puml src="diagrams/UniquenessConstraintClassDiagram.puml" />
+
 #### Sequence Diagram
 
 The following diagram illustrates how duplicate checks are performed during an `add` or `edit` operation:
