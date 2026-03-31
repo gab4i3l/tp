@@ -43,7 +43,7 @@
           <SplitPane style="-fx-background-color: transparent;">
             <items>
               <!-- Left Side: Person List -->
-              <VBox fx:id="personList" minWidth="350" prefWidth="350">
+              <VBox fx:id="personList" minWidth="375" maxWidth="475" prefWidth="375">
                 <StackPane fx:id="personListPanelPlaceholder" VBox.vgrow="ALWAYS"/>
               </VBox>
 
