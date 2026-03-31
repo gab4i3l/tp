@@ -10,8 +10,7 @@
     xmlns:fx="http://javafx.com/fxml/1" style="-fx-background-color: transparent;">
   <TextArea fx:id="resultDisplay" editable="false" wrapText="true" styleClass="result-display"/>
     <VBox fx:id="resultListContainer" styleClass="result-display"
-          visible="false" spacing="8"
-          style="-fx-padding: 15;">
+          visible="false" spacing="24">
         <Label fx:id="resultDescriptionDisplay" wrapText="true"
                styleClass="result-description-label"
                maxWidth="Infinity"/>
