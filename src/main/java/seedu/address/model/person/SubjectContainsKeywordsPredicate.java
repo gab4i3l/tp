@@ -48,9 +48,11 @@ public class SubjectContainsKeywordsPredicate implements Predicate<Person> {
     }
 
     private boolean hasSubjectMatchingKeywordLower(List<String> personSubjectsLower, String keyword) {
-        String kwLower = keyword == null ? "" : keyword.toLowerCase();
+        String kwLower = keyword == null ? "" : keyword.toLowerCase().trim().replaceAll("\\s+", " ");
         return personSubjectsLower.stream()
-                .anyMatch(personSubject -> personSubject.startsWith(kwLower) || personSubject.contains(" " + kwLower));
+                .map(subject -> subject.trim().replaceAll("\\s+", " "))
+                .anyMatch(normalizedSubject -> normalizedSubject.startsWith(kwLower) 
+                        || normalizedSubject.contains(" " + kwLower));
     }
 
     @Override

@@ -49,13 +49,17 @@ public class SubjectContainsKeywordsPredicateTest {
                 new SubjectContainsKeywordsPredicate(Collections.singletonList("Math"));
         assertTrue(predicate.test(new PersonBuilder().withSubject("Math").build()));
 
-        // Substring keyword (contains)
+        // Word-Prefix keyword (matches at the start of a word)
         predicate = new SubjectContainsKeywordsPredicate(Collections.singletonList("Math"));
         assertTrue(predicate.test(new PersonBuilder().withSubject("Advanced Math").build()));
 
         // Multi-word keyword (prefix match with spaces)
         predicate = new SubjectContainsKeywordsPredicate(Collections.singletonList("Advanced Math"));
         assertTrue(predicate.test(new PersonBuilder().withSubject("Advanced Math").build()));
+
+        // Subject with multiple consecutive spaces
+        predicate = new SubjectContainsKeywordsPredicate(Collections.singletonList("Math"));
+        assertTrue(predicate.test(new PersonBuilder().withSubject("Advanced  Math").build()));
 
         // Multiple keywords (AND)
         predicate = new SubjectContainsKeywordsPredicate(Arrays.asList("Math", "Physics"));
