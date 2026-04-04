@@ -364,11 +364,11 @@ Search for tutors by keyword, name, subject, or hourly rate — or combine them 
 
 #### Search Modes
 
-| Mode | Syntax | Returns |
-|------|--------|---------|
-| **General Search** | `find KEYWORD [MORE_KEYWORDS]` | All contacts where any field has a word starting with any KEYWORD (case-insensitive; space-separate multiple keywords) |
-| **Filtering** | `find [PREFIXES]` | Contacts matching all given prefixes |
-| **General + Filter** | `find KEYWORD [MORE_KEYWORDS] [PREFIXES]` | General keyword match (keywords must come before prefixes), narrowed by prefix conditions |
+| Mode                 | Syntax                                                                                  | Returns                                                                |
+|----------------------|-----------------------------------------------------------------------------------------|------------------------------------------------------------------------|
+| **General Search**   | `find KEYWORD [MORE_KEYWORDS]` (case-insensitive)                                       | Tutors where **any** attribute has a word starting with any keyword    |
+| **Filtering**        | `find [PREFIXES]` (case-insensitive)                                                    | Tutors matching **all** prefix conditions                              |
+| **General + Filter** | `find KEYWORD [MORE_KEYWORDS] [PREFIXES]`  (case-insensitive; keywords before prefixes) | Tutors matching **any** keyword, narrowed by **all** prefix conditions |
 
 ---
 
@@ -402,7 +402,7 @@ Search for tutors by keyword, name, subject, or hourly rate — or combine them 
 ```
 find math
 ```
-Returns all contacts containing "math" in any field.
+Returns all tutors containing "math" in any field.
 
 ![Result for 'find math'](images/find_Math.png)
 
