@@ -203,7 +203,6 @@ To ensure data integrity, the application enforces uniqueness constraints on eac
 #### Current Implementation
 
 The uniqueness of a `Person` is determined by the following fields:
-- Name
 - Phone number
 - Email address
 
@@ -211,16 +210,14 @@ Duplicate checks are performed in `AddCommand` and `EditCommand` before delegati
 If a duplicate is detected, a `CommandException` is thrown immediately with an appropriate error message.
 
 If any of the following conditions are met:
-- A person with the same name already exists
 - A person with the same phone number already exists
 - A person with the same email address already exists
 
 The operation is rejected and an appropriate error message is shown to the user.
 
 Duplicate checks are performed in the following priority:
-1. Name
-2. Phone number
-3. Email address
+1. Phone number
+2. Email address
 
 This ensures that name conflicts are detected first, followed by contact information conflicts.
 
@@ -228,7 +225,7 @@ This ensures that name conflicts are detected first, followed by contact informa
 
 **Aspect: What defines a duplicate person**
 
-- **Alternative 1 (current choice):** Use name, phone, and email as uniqueness constraints
+- **Alternative 1 (current choice):** Use phone number, and email address as uniqueness constraints
     - Pros: Prevents duplicate entries effectively and maintains clean data
     - Cons: May be restrictive in cases where users share names or contact details
 
