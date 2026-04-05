@@ -89,8 +89,6 @@ The `UI` component,
 The following sequence diagram illustrates the interactions between the `UI` and `Logic` components when executing a `Find` name command attribute on the updated UI.
 
 <puml src="diagrams/UiFindSequenceDiagram.puml" alt="Interactions between the UI and Logic Components for the `find n/john` command" />
-<puml src="diagrams/FindSequenceDiagram.puml" alt="Logic and Model Components for the `find n/john` command" />
-
 
 ### Logic component
 
