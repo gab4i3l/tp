@@ -42,7 +42,7 @@ This guide is written for parents who are comfortable using a keyboard and want 
       - [Examples](#examples)
       - [Invalid Usage](#invalid-usage)
     - [Deleting a Tutor : `delete`](#deleting-a-tutor--delete)
-    - [Exiting the program : `exit`](#exiting-the-program--exit)
+    - [Exiting the Program : `exit`](#exiting-the-program--exit)
     - [Saving Your Data](#saving-your-data)
     - [Editing the Data File Directly](#editing-the-data-file-directly)
   - [FAQ](#faq)
@@ -178,7 +178,7 @@ Opens a link to this User Guide.
 
 **Format:** `help`
 
-**Expected output:** A pop-up window appears with a link to the online User Guide.
+**Expected output:** A pop-up window appears with a button to copy the online User Guide URL.
 
 ![Help window](images/helpMessage.png)
 
@@ -534,8 +534,6 @@ Format: `delete INDEX`
 
 <box type="warning" seamless>
 
-### Exiting the program : `exit`
-
 **Caution:** Deletion is permanent and cannot be undone. Double-check the index before running this command.
 
 </box>
@@ -561,6 +559,16 @@ Deletes the 1st tutor returned in the Biology search results.
 ```
 Deleted Person: Betsy Crowe; Phone: 1234567; Email: betsycrowe@example.com; Address: Newgate Prison; Subject: Biology; Rate: 55; Tags: [experienced][recommended]
 ```
+
+---
+
+### Exiting the Program : `exit`
+
+Closes the Tuto application.
+
+**Format:** `exit`
+
+When `exit` executes successfully, Tuto closes. Tutor data is saved automatically as part of command execution.
 
 ---
 
