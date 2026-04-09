@@ -472,6 +472,8 @@ Search for tutors by keyword, name, subject, or hourly rate — or combine them 
 | Above  | `r/>RATE`       | Tutors charging more than `RATE`                        |
 | Below  | `r/<RATE`       | Tutors charging less than `RATE`                        |
 
+In every `r/` field above, each numeric token (`RATE`, `RATE1`, `RATE2`) must be **non-negative** (integers only; no negative numbers). For ranges, `RATE1` must also be less than or equal to `RATE2`.
+
 **Mixed prefixes** — all conditions must be met
 
 - `find n/Alex r/40 s/Math` → named "Alex…", rate $40, teaches Math
@@ -744,14 +746,14 @@ A: The Help Window may be minimised. Check your taskbar and restore it manually.
 
 ## Command Summary
 
-| Action   | Format                                                                                                | Example                                                                                                           |
-| -------- | ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
-| **Help** | `help`                                                                                                | `help`                                                                                                            |
-| **Add**  | `add n/NAME p/PHONE_NUMBER e/EMAIL s/SUBJECT1 s/SUBJECT2 ... s/SUBJECTn r/RATE [a/ADDRESS] [t/TAG]…​` | `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 s/Biology r/45 t/friend t/colleague` |
-| **Edit** | `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [s/SUBJECT]… [r/RATE] [t/TAG]…`                  | `edit 2 n/James Lee e/james@example.com`                                                                          |
-| **Delete** | `delete INDEX` | `delete 3` |
-| **Find** | `find KEYWORD` \| `find [PREFIXES]` \| `find KEYWORD [PREFIXES]` | `find geography`, `find s/Biology r/45`, `find korean r/>50` |
-| **Sort** | `sort FIELD ORDER` | `sort name asc`, `sort rate desc` |
-| **List** | `list` | `list` |
-| **Clear** | `clear` | `clear` |
-| **Exit** | `exit` | `exit` |
+| Action     | Format                                                                                                | Example                                                                                                           |
+| ---------- | ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| **Help**   | `help`                                                                                                | `help`                                                                                                            |
+| **Add**    | `add n/NAME p/PHONE_NUMBER e/EMAIL s/SUBJECT1 s/SUBJECT2 ... s/SUBJECTn r/RATE [a/ADDRESS] [t/TAG]…​` | `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 s/Biology r/45 t/friend t/colleague` |
+| **Edit**   | `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [s/SUBJECT]… [r/RATE] [t/TAG]…`                  | `edit 2 n/James Lee e/james@example.com`                                                                          |
+| **Delete** | `delete INDEX`                                                                                        | `delete 3`                                                                                                        |
+| **Find**   | `find KEYWORD` \| `find [PREFIXES]` \| `find KEYWORD [PREFIXES]`                                      | `find geography`, `find s/Biology r/45`, `find korean r/>50`                                                      |
+| **Sort**   | `sort FIELD ORDER`                                                                                    | `sort name asc`, `sort rate desc`                                                                                 |
+| **List**   | `list`                                                                                                | `list`                                                                                                            |
+| **Clear**  | `clear`                                                                                               | `clear`                                                                                                           |
+| **Exit**   | `exit`                                                                                                | `exit`                                                                                                            |
