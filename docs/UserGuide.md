@@ -190,54 +190,66 @@ Adds a new tutor profile to Tuto.
 
 ![add message](images/addMessage.png)
 
-Format: `add n/NAME p/PHONE_NUMBER e/EMAIL s/SUBJECT1 s/SUBJECT2 ... s/SUBJECTn r/RATE [a/ADDRESS] [t/TAG]…​`
+**Format:** `add n/NAME p/PHONE_NUMBER e/EMAIL s/SUBJECT1 [s/SUBJECT2]... r/RATE [a/ADDRESS] [t/TAG]…`
 
-| Flag | Field             | Required? | Accepted values                                                         |
-| ---- | ----------------- | --------- | ----------------------------------------------------------------------- |
-| `n/` | Name              | Yes       | Only Alphnumeric Text + Spaces                                          |
-| `p/` | Phone number      | Yes       | Digits only, at least 3 digits                                          |
-| `e/` | Email             | Yes       | Valid email format (e.g. `user@example.com`)                            |
-| `a/` | Address           | No        | Any text                                                                |
-| `s/` | Subject           | Yes       | Only Alphnumeric Text + Spaces (e.g. `Advanced Mathematics`, `Biology`) |
-| `r/` | Hourly rate (SGD) | Yes       | Positive Integer Value (Including Zero)                                 |
-| `t/` | Tag               | No        | Alphanumeric, no spaces                                                 |
+---
+
+#### Parameters
+
+| Prefix | Field             | Required | Accepted values                                                         |
+| ------ | ----------------- | -------- | ----------------------------------------------------------------------- |
+| `n/`   | Name              | Yes      | Alphanumeric text + spaces                                              |
+| `p/`   | Phone number      | Yes      | Digits only, at least 3 digits                                          |
+| `e/`   | Email             | Yes      | Valid email format (e.g. `user@example.com`)                            |
+| `s/`   | Subject           | Yes      | Alphanumeric text + spaces (e.g. `Advanced Mathematics`, `Biology`)     |
+| `r/`   | Hourly rate (SGD) | Yes      | Positive integer value (including zero)                                 |
+| `a/`   | Address           | No       | Any text                                                                |
+| `t/`   | Tag               | No       | Alphanumeric text, no spaces                                            |
 
 <box type="tip" seamless>
 
 **Tip:**
 
-1. Tags are powerful ways to organise contacts. You can use multiple tags in a tutor contact to provide more information, e.g. `t/home` for home tutoring
-   services.
-2. A person can have any number of tags (including 0) and more than one subjects.
-3. The parameters of the command can be entered in any orders.
+1. Tags are powerful ways to organise contacts. You can use multiple tags to provide more detail, e.g. `t/home` and `t/weekend`.
+2. A person can have any number of tags (including 0) and multiple subjects.
+3. Command parameters can be entered in any order.
 
 </box>
+
+---
+
+#### Constraints
 
 <box type="warning" seamless>
 
-**Note:** Adding a tutor with the same phone number, or email as an existing entry is not allowed. Tuto treats each field as unique and will reject the operation if any duplicate is detected.
+**Duplicate Contact:** Adding a tutor with the same phone number or email as an existing entry is not allowed. Tuto treats these fields as unique identifiers and protects against adding duplicate contacts.
 
 </box>
 
-**Examples:**
+![add constraint phone](images/add_cons_phone.png)
+
+![add constraint email](images/add_cons_email.png)
+
+---
+
+#### Examples
+
+**Adding with minimum required fields**
 
 ```
-add n/John Doe p/98765432 e/johnd@example.com s/Chemistry r/50
+add n/ elizabeth chang p/ 82516782 e/ elizabeth@example.com s/ piano r/ 76
 ```
+![add minimum required](images/add_min_req.png)
 
-Adds John Doe as a Chemistry tutor charging $50/hr, with no address or tags.
+---
 
-```
-add n/Betsy Crowe p/1234567 e/betsycrowe@example.com a/Newgate Prison s/Biology r/55 t/experienced t/recommended
-```
-
-Adds Betsy Crowe as a Biology tutor with an address and two tags.
-
-**Expected output:**
+**Adding with optional fields (address and tags)**
 
 ```
-New person added: John Doe; Phone: 98765432; Email: johnd@example.com; Address: ; Subject: Chemistry; Rate: 50; Tags:
+add n/ gabrielle chee p/ 87429246 e/ gabrielle@example.com s/ computing r/ 85 a/ 8 napier road t/ prodigy  
 ```
+
+![add optionals](images/add_optional.png)
 
 ---
 
