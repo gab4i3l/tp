@@ -651,7 +651,7 @@ Guarantees: If MSS completes until step 4, the Tutor Profile will be updated in 
 
 ### Non-Functional Requirements
 
-1. The system should work on mainstream operating systems　such as Windows, Linux, macOS as long as Java `17` or above installed.
+1. The system should work on mainstream operating systems such as Windows, Linux, and macOS, as long as Java `17` or above is installed.
 2. The system should be able to load and display up to 1000 Tutor Profiles within 5 seconds of application start up.
 3. A user with above average typing speed should be able to perform common tasks (such as adding or editing tutor profiles) faster using commands and flags than using the mouse.
 4. The system should respond to user commands within 1 second for typical usage, excluding file loading and saving operations.
@@ -674,9 +674,9 @@ Guarantees: If MSS completes until step 4, the Tutor Profile will be updated in 
 - **Index**: The number displayed next to a tutor's name in the contact list (e.g., the 3 in 3. John Doe). Used to select a specific tutor for commands like edit or delete.
 - **JAR File**: The file format used to distribute Tuto, allowing it to run on any computer with Java installed without a setup wizard.
 - **Model**: The component responsible for storing and managing application data.
-- **Parameter**: The specific information provided after a Flag (e.g., John is the parameter for /n).
+- **Parameter**: The specific information provided after a Flag (e.g., John is the parameter for `n/`).
 - **Person**: A data entity representing a tutor profile, containing attributes such as name, phone, email, address, subject, rate and tags.
-- **Prefix**: A specific prefix (e.g., /n, /p, /e) used to identify the type of data following it.
+- **Prefix**: A specific prefix (e.g., `n/`, `p/`, `e/`) used to identify the type of data following it.
 - **Rate**: The cost per hour for hiring the tutor.
 - **Subject**: The academic discipline a tutor teaches (e.g., Math, Physics).
 - **Tag**: A customisable label user can put on a tutor profile.
@@ -1108,7 +1108,7 @@ See also: [Sorting the Tutor List](UserGuide.md#sorting-the-tutor-list-sort) in 
         - The tutor list is **empty**; the bad file is not loaded as valid data.
         - After a successful save, the file on disk is overwritten with valid JSON for the current in-memory book (usually empty until you add tutors).
 
-3. Adverserial case of poisoned JSON file 3. Invalid but well-formed JSON (passes parsing, fails validation/model rules)
+3. Adversarial case of poisoned JSON file: invalid but well-formed JSON (passes parsing, fails validation/model rules)
     1. Prerequisites: Tuto is not running.
     2. Open `data/addressbook.json` in a text editor. Enter valid JSON such as an object with duplicate tutors in the `persons` array (i.e. two identical tutor entries). Save.
     3. Relaunch Tuto.

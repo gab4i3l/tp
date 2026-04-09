@@ -200,7 +200,7 @@ Tuto considers a Tutor Profile to be a duplicate if it shares the exact same **P
 
 <box type="warning" seamless>
 
-**Duplicate Error:** Neither adding a new tutor nor editing an existing one is permitted if it would resolve in two Tutor Profiles having the same phone number or email address.
+**Duplicate Error:** Neither adding a new tutor nor editing an existing one is permitted if it would result in two Tutor Profiles having the same phone number or email address.
 
 </box>
 
@@ -292,7 +292,7 @@ Updates one or more fields of an existing Tutor Profile.
 
 ![Edit command hero image](images/editMessage.png)
 
-**Format:** edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [s/SUBJECT]… [r/RATE] [t/TAG]…
+**Format:** `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [s/SUBJECT]… [r/RATE] [t/TAG]…`
 
 ---
 
@@ -700,7 +700,7 @@ Tuto's data are saved automatically as a JSON file `[JAR file location]/data/add
 
 **Caution:**
 If your changes to the data file makes its format invalid, Tuto will discard all data and start with an empty data file at the next run. Hence, it is recommended to take a backup of the file before editing it.<br>
-Furthermore, certain edits can cause the Tuto to behave in unexpected ways (e.g., if a value entered is outside the acceptable range). Therefore, edit the data file only if you are confident that you can update it correctly.
+Furthermore, certain edits can cause Tuto to behave in unexpected ways (e.g., if a value entered is outside the acceptable range). Therefore, edit the data file only if you are confident that you can update it correctly.
 </box>
 
 ---
