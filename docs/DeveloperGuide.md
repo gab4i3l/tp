@@ -254,8 +254,7 @@ The sequence of interactions is as follows:
 #### Alternative flows
 
 - If the input format from user is invalid, a `ParseException` is thrown during parsing and the `command` object is not created.
-- If the person already exists in the address book, a `CommandException` is thrown and the operation is aborted.
-- If the phone or email already exists, a `CommandException` is thrown and the operation is aborted.
+- If the phone or email already exists in Tuto, a `CommandException` is thrown and the operation is aborted.
 
 ---
 
