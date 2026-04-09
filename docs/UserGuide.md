@@ -40,7 +40,7 @@ This guide is written for parents who are comfortable using a keyboard and want 
       - [Prefixes](#prefixes)
       - [Search Modes](#search-modes)
       - [How Matching Works](#how-matching-works)
-      - [Examples](#examples)
+      - [Examples](#examples)````
       - [Invalid Usage](#invalid-usage)
     - [Sorting the Tutor List : `sort`](#sorting-the-tutor-list-sort)
     - [Listing All Tutors : `list`](#listing-all-tutors-list)
@@ -116,7 +116,7 @@ Type a command into the **Command Box** at the bottom and press **Enter** to run
 
 </box>
 
----
+---````
 
 ## Understanding the Interface
 
