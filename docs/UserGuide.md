@@ -237,8 +237,8 @@ Adds a new Tutor Profile to Tuto.
 1. Tags are powerful ways to organise Tutor Profiles. You can use multiple tags to provide more detail, e.g. `t/home` and `t/weekend`.
 2. A person can have any number of tags (including 0) and multiple subjects.
 3. Command parameters can be entered in any order.
-4. You cannot repeat the same subject or tag value in one command (e.g. s/Math s/Math or t/friend t/friend is rejected).
-
+4. You cannot repeat the same subject or tag value in one command, even if the casing is different (e.g. s/Math s/math or t/friend t/friend is rejected).
+5. Rate can only be positive integer. No decimal values are allowed.
 </box>
 
 ---

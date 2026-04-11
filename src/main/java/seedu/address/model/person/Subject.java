@@ -28,8 +28,9 @@ public class Subject {
      */
     public Subject(String subject) {
         requireNonNull(subject);
-        checkArgument(isValidSubject(subject), MESSAGE_CONSTRAINTS);
-        this.subject = subject;
+        String trimmed = subject.trim();
+        checkArgument(isValidSubject(trimmed), MESSAGE_CONSTRAINTS);
+        this.subject = trimmed;
     }
 
     /**
@@ -56,12 +57,12 @@ public class Subject {
         }
 
         Subject otherSubject = (Subject) other;
-        return subject.equals(otherSubject.subject);
+        return subject.equalsIgnoreCase(otherSubject.subject);
     }
 
     @Override
     public int hashCode() {
-        return subject.hashCode();
+        return subject.toLowerCase().hashCode();
     }
 
 }
