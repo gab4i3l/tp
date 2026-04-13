@@ -1010,7 +1010,7 @@ testers are expected to do more _exploratory_ testing.
 7. Prefix case sensitivity and preamble swallowing (Mistyping prefixes)
     1. Prerequisites: Ensure the contact list has at least one Tutor with the name "Alice".
     2. Test case: `find N/Alice`<br>
-       Expected: The text feedback area is hidden. Because `N/` (capitalized) is not recognized as the official name prefix, the parser safely swallows it as a generic keyword. The blue search query bar shows `All fields: "N/Alice"`. Below it, the result list will show `No tutors found.` (unless a tutor profile literally contains "N/Alice").
+       Expected: The text feedback area is hidden. Because `N/` (capitalized) is not recognized as the official name prefix, the parser treats it as a generic keyword instead The blue search query bar shows `All fields: "N/Alice"`. Below it, the result list will show `No tutors found.` (unless a tutor profile literally contains "N/Alice").
 8. Regex and Special Character injection attempts
     1. Prerequisites: Tuto is running.
     2. Test case: `find *[a-z]+* ?.* {}`<br>
@@ -1022,7 +1022,7 @@ testers are expected to do more _exploratory_ testing.
 10. Backward slashes and parser confusion techniques
     1. Prerequisites: Tuto is running.
     2. Test case: `find /n Alice /s Math \t friend`<br>
-       Expected: No search is performed. The system strictly expects `n/`, `s/`, etc. as prefixes and subject should only be alphanumeric. Since the slashes are inverted or prefixed, the parser safely swallows it as a generic keyword. The blue search query bar shows `All fields: "/n Alice /s Math \t friend"`. Below it, the result list will show tutor records that contains parts of the search keywords.
+       Expected: No search is performed. The system strictly expects `n/`, `s/`, etc. as prefixes and subject should only be alphanumeric. Since the slashes are inverted or prefixed, the parser treats it as a generic keyword. The blue search query bar shows `All fields: "/n Alice /s Math \t friend"`. Below it, the result list will show tutor records that contains parts of the search keywords.
 11. Empty prefix values injected before valid constraints (Syntax gap traps)
     1. Prerequisites: Tuto is running.
     2. Test case: `find n/ s/Math r/50`<br>

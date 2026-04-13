@@ -61,7 +61,7 @@ public class Address {
         }
 
         Address otherAddress = (Address) other;
-        return value.equals(otherAddress.value);
+        return value.equalsIgnoreCase(otherAddress.value);
     }
 
     @Override

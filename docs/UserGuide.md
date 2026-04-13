@@ -87,7 +87,7 @@ Move the file into a dedicated folder (e.g. `~/tuto/`). This folder will store y
     ```
     cd ~/tuto
     ```
-3. Run the application:
+3. Input the following command to the terminal to start the application:
     ```
     java -jar tuto.jar
     ```
@@ -125,7 +125,7 @@ Type a command into the **Command Box** at the bottom and press **Enter** to run
 Tuto's interface has three main areas:
 
 - **Tutor List Panel (Left)** — shows all Tutor Profiles saved
-- **Result Display (Top Right)** — shows feedback after each command (success or error messages, records retrieved searching)
+- **Result Display (Top Right)** — shows feedback after each command (success or error messages and records retrieved from searches)
 - **Command Box (Bottom Right)** — where you type your commands
 
 Each tutor card in the panel shows the tutor's name, phone number, email, subject, and hourly rate. Tags (if any) appear as labels on the card.
@@ -220,15 +220,15 @@ Adds a new Tutor Profile to Tuto.
 
 #### Parameters
 
-| Prefix | Field             | Required | Accepted values                                                                 |
-| ------ | ----------------- | -------- |---------------------------------------------------------------------------------|
-| `n/`   | Name              | Yes      | Alphanumeric text + spaces                                                      |
-| `p/`   | Phone number      | Yes      | 8 digits for Singapore number, 10 digits excluding '+' for international number |
-| `e/`   | Email             | Yes      | Valid email format (e.g. `user@example.com`)                                    |
-| `s/`   | Subject           | Yes      | Alphanumeric text + spaces (e.g. `Advanced Mathematics`, `Biology`)             |
-| `r/`   | Hourly rate (SGD) | Yes      | 0 or any positive integer                                                       |
-| `a/`   | Address           | No       | Any text                                                                        |
-| `t/`   | Tag               | No       | Alphanumeric text, no spaces                                                    |
+| Prefix | Field             | Required | Accepted values                                                                                        |
+| ------ | ----------------- | -------- |--------------------------------------------------------------------------------------------------------|
+| `n/`   | Name              | Yes      | Alphanumeric text + spaces allowed only, no special characters are allowed                             |
+| `p/`   | Phone number      | Yes      | 8 digits for Singapore number, 10 digits excluding '+' for international number                        |
+| `e/`   | Email             | Yes      | Valid email format (e.g. `user@example.com`)                                                           |
+| `s/`   | Subject           | Yes      | Alphanumeric text + spaces (e.g. `Advanced Mathematics`, `Biology`)                                    |
+| `r/`   | Hourly rate (SGD) | Yes      | 0 or any positive integer                                                                              |
+| `a/`   | Address           | No       | Any text (must not contain valid prefixes such as s/, as these will be interpreted as separate fields) |
+| `t/`   | Tag               | No       | Alphanumeric text, no spaces                                                                           |
 
 <box type="tip" seamless>
 
@@ -686,22 +686,17 @@ When `exit` executes successfully, Tuto closes. Tutor data is saved automaticall
 Tuto's data are saved automatically as a JSON file `[JAR file location]/data/addressbook.json`. Advanced users are welcome to update data directly by editing that data file.
 
 <box type="warning" seamless>
-
-**Caution:**
-If your changes to the data file makes its format invalid, Tuto will discard all data and start with an empty data file at the next run. Hence, it is recommended to take a backup of the file before editing it.<br>
-Furthermore, certain edits can cause Tuto to behave in unexpected ways (e.g., if a value entered is outside the acceptable range). Therefore, edit the data file only if you are confident that you can update it correctly.
+**Caution:** If the file is saved in an invalid format, Tuto will discard all data and start fresh on the next launch. **Back up the file before making any edits.** Additionally, values outside accepted ranges may cause Tuto to behave unexpectedly.
 </box>
-
----
 
 ### Editing the Data File Directly
 
 Advanced users may edit the data file manually using any text editor.
 
 <box type="warning" seamless>
+**Caution:** If your changes to the data file make its format invalid, Tuto will discard all data and start with an empty data file on the next launch. Back up the file before editing it.
 
-**Caution:** If the file is saved in an invalid format, Tuto will discard all data and start fresh on the next launch. **Back up the file before making any edits.** Additionally, values outside accepted ranges may cause Tuto to behave unexpectedly.
-
+Furthermore, certain edits can cause Tuto to behave in unexpected ways (e.g., if a value is outside the acceptable range). Therefore, edit the data file only if you are confident that you can update it correctly.
 </box>
 
 ---
@@ -735,14 +730,14 @@ A: The Help Window may be minimised. Check your taskbar and restore it manually.
 
 ## Command Summary
 
-| Action     | Format                                                                                                | Example                                                                                                           |
-| ---------- | ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
-| **Help**   | `help`                                                                                                | `help`                                                                                                            |
-| **Add**    | `add n/NAME p/PHONE_NUMBER e/EMAIL s/SUBJECT1 s/SUBJECT2 ... s/SUBJECTn r/RATE [a/ADDRESS] [t/TAG]…​` | `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 s/Biology r/45 t/friend t/colleague` |
-| **Edit**   | `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [s/SUBJECT]… [r/RATE] [t/TAG]…`                  | `edit 2 n/James Lee e/james@example.com`                                                                          |
-| **Delete** | `delete INDEX`                                                                                        | `delete 3`                                                                                                        |
-| **Find**   | `find KEYWORD` \| `find [PREFIXES]` \| `find KEYWORD [PREFIXES]`                                      | `find geography`, `find s/Biology r/45`, `find korean r/>50`                                                      |
-| **Sort**   | `sort FIELD ORDER`                                                                                    | `sort name asc`, `sort rate desc`                                                                                 |
-| **List**   | `list`                                                                                                | `list`                                                                                                            |
-| **Clear**  | `clear`                                                                                               | `clear`                                                                                                           |
-| **Exit**   | `exit`                                                                                                | `exit`                                                                                                            |
+| Action     | Format                                                                                                | Example                                                                                                              |
+| ---------- | ----------------------------------------------------------------------------------------------------- |----------------------------------------------------------------------------------------------------------------------|
+| **Help**   | `help`                                                                                                | `help`                                                                                                               |
+| **Add**    | `add n/NAME p/PHONE_NUMBER e/EMAIL s/SUBJECT1 s/SUBJECT2 ... s/SUBJECTn r/RATE [a/ADDRESS] [t/TAG]…​` | `add n/James Ho p/+6512345678 e/jamesho@example.com a/123, Clementi Rd, 1234665 s/Biology r/45 t/friend t/colleague` |
+| **Edit**   | `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [s/SUBJECT]… [r/RATE] [t/TAG]…`                  | `edit 2 n/James Lee e/james@example.com`                                                                             |
+| **Delete** | `delete INDEX`                                                                                        | `delete 3`                                                                                                           |
+| **Find**   | `find KEYWORD` \| `find [PREFIXES]` \| `find KEYWORD [PREFIXES]`                                      | `find geography`, `find s/Biology r/45`, `find korean r/>50`                                                         |
+| **Sort**   | `sort FIELD ORDER`                                                                                    | `sort name asc`, `sort rate desc`                                                                                    |
+| **List**   | `list`                                                                                                | `list`                                                                                                               |
+| **Clear**  | `clear`                                                                                               | `clear`                                                                                                              |
+| **Exit**   | `exit`                                                                                                | `exit`                                                                                                               |
